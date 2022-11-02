@@ -34,6 +34,15 @@ public class NeoTunes {
 		msj="New consumer premium added sucefully";
 		return msj;
  	}
+ 	public String addUserConsumerStandard(String nickname, String id){
+ 		String msj="";
+		Date vinculationDate = new Date();
+		UserConsumerStandard newConsumerEstandard = new UserConsumerStandard(nickname, id, vinculationDate);
+		users.add(newConsumerEstandard);
+		msj="New consumer premium added sucefully";
+		return msj;
+ 	}
+
  }
 
 

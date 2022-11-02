@@ -52,7 +52,7 @@ public class Main{
 			String msj="";
 			switch(option){
 				case 1:
-					System.out.println("Enter the user Id");
+					System.out.println("Enter the user Nickname");
 					userNickname=reader.next();
 					System.out.println("Enter the user Id");
 					userId=reader.next();
@@ -62,13 +62,29 @@ public class Main{
 					System.out.println(msj);
 				break;
 				case 2:
-					System.out.println("Enter the user Id");
+					System.out.println("Enter the user Nickname");
 					userNickname=reader.next();
 					System.out.println("Enter the user Id");
 					userId=reader.next();
 					System.out.println("Enter urlProductor");
 					urlProductor=reader.next();
 					msj=neoTunes.addUserProductCreatorContent(userNickname, userId, urlProductor);
+					System.out.println(msj);
+				break;
+				case 3:
+					System.out.println("Enter the user Nickname");
+					userNickname=reader.next();
+					System.out.println("Enter the user Id");
+					userId=reader.next();
+					msj=neoTunes.addUserConsumerPremium(userNickname, userId);
+					System.out.println(msj);
+				break;
+				case 4:
+					System.out.println("Enter the user Nickname");
+					userNickname=reader.next();
+					System.out.println("Enter the user Id");
+					userId=reader.next();
+					msj=neoTunes.addUserConsumerStandard(userNickname, userId);
 					System.out.println(msj);
 				break;
 		}
