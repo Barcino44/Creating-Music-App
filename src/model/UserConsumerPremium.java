@@ -40,7 +40,7 @@ public class UserConsumerPremium extends UserConsumer{
 				}
 				for (int i=0;i<ROWS_SIZE ;i++ ) {
 					for(int j=0; i<COLUMNS_SIZE; i++){
-						matriz[5][j] = (int)(Math.random()*range)+lowerBound;
+						matriz[i][j] = (int)(Math.random()*range)+lowerBound;
 						if(i==j){
 							msj=msj+matriz[i][j];
 						}

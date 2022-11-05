@@ -44,8 +44,8 @@ public class Main{
 			"3.Add a standard consumer \n"+
 			"4.Add a premium consumer\n"+
 			"5.Add a song\n" +
-			"6.Add a podcast";
-
+			"6.Add a podcast\n"+
+			"7.Add a PlayList\n";
 	}
 	public void executeOption(int option){
 			String username="";
