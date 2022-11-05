@@ -71,6 +71,12 @@ public class Main{
 			String namePodcast="";
 			String descriptionPodcast="";
 			String urlPodcast="";
+			String playListName="";
+			int selectionTypePlayList=0;
+			String validationPlayList="The possible types of PlayList are:\n"+
+									  "1.SONGS\n"+
+									  "2.PODCAST\n"+
+									  "3.BOTH";
 
 			String msj="";
 			switch(option){
@@ -122,6 +128,7 @@ public class Main{
 						while(!reader.hasNextInt()){
 							reader.next();
 							System.out.println("Invalid, enter an Integer");
+							System.out.println(validationGenre);
 						}
 						selectionTypeGenre=reader.nextInt();
 
@@ -164,6 +171,7 @@ public class Main{
 						while(!reader.hasNextInt()){
 							reader.next();
 							System.out.println("Invalid, enter an Integer");
+							System.out.println(validationCategory);
 						}
 						selectionTypeCategory=reader.nextInt();
 
@@ -189,6 +197,34 @@ public class Main{
 						System.out.println(msj);	
 					}
 					break;
+				case 7:
+					System.out.println("Enter the name of the user who are going to be added the PlayList");
+					username=reader.next();
+					if(neoTunes.validateIfUserConsumerExist(username)!=true){
+						System.out.println("The user doesn't exists");
+					}
+					else{
+						System.out.println("Enter the type of PlayList that you want to add");
+						System.out.println(validationPlayList);
+						while(!reader.hasNextInt()){
+							reader.next();
+							System.out.println("Invalid, enter an Integer");
+							System.out.println(validationPlayList);
+						}
+						selectionTypePlayList=reader.nextInt();
+
+						while(selectionTypePlayList!=1&&selectionTypePlayList!=2&&selectionTypePlayList!=3){
+							System.out.println("It is not a type of playist");
+							System.out.println(validationPlayList);
+							selectionTypePlayList=reader.nextInt();
+						}
+						System.out.println("Enter the name of the PlayList");
+						playListName=reader.next();
+						msj=neoTunes.addPlayListToUser(username,selectionTypePlayList,playListName);
+						System.out.println(msj);
+					}
+				break;
+
 				case 0: 
 					System.out.println("Exit program.");
 					break; 

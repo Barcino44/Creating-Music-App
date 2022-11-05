@@ -46,11 +46,11 @@ public class NeoTunes {
  		String msj="";
  		for (int i=0;i<users.size();i++){
  			if(users.get(i)!=null &&users.get(i) instanceof UserProductorArtist){		
-			int playingTimes=0;
-			int sellingTimes=0;
-			Song newSong = new Song(selectionTypeGenre, name, album, albumURL, duration, ventValue, playingTimes,sellingTimes);
-			((UserProductorArtist)(users.get(i))).addSong(newSong);
-			msj="The song "+ name + " has been added to the user "+ productorUsername;
+				int playingTimes=0;
+				int sellingTimes=0;
+				Song newSong = new Song(selectionTypeGenre, name, album, albumURL, duration, ventValue, playingTimes,sellingTimes);
+				((UserProductorArtist)(users.get(i))).addSong(newSong);
+				msj="The song "+ name + " has been added to the user "+ productorUsername;
 			}
 		}
  		return msj;
@@ -70,10 +70,10 @@ public class NeoTunes {
  		String msj="";
  		for (int i=0;i<users.size();i++){
  			if(users.get(i)!=null &&users.get(i) instanceof UserProductorCreatorContent){		
-			int playingTimes=0;
-			Podcast newPodcast = new Podcast(selectionTypeCategory, name, description, url, duration, playingTimes);
-			((UserProductorCreatorContent)(users.get(i))).addPodcast(newPodcast);
-			msj="The podcast "+ name + " has been added to the user "+ productorUsername;
+				int playingTimes=0;
+				Podcast newPodcast = new Podcast(selectionTypeCategory, name, description, url, duration, playingTimes);
+				((UserProductorCreatorContent)(users.get(i))).addPodcast(newPodcast);
+				msj="The podcast "+ name + " has been added to the user "+ productorUsername;
 			}
 		}
  		return msj;
@@ -89,6 +89,35 @@ public class NeoTunes {
  		}
  		return creatorContentExist;
  	}
+ 	public boolean validateIfUserConsumerExist(String consumerUsername){
+ 		boolean userConsumerExist=false;
+ 		for (int i=0;i<users.size()&&!userConsumerExist;i++ ) {
+ 			if(users.get(i)!=null){	
+ 				if(users.get(i) instanceof UserConsumerStandard||users.get(i) instanceof UserConsumerPremium){
+					if(((UserConsumer)(users.get(i))).getUsername().equals(consumerUsername)){
+						userConsumerExist=true;
+					}
+ 				}
+ 			}
+ 		}
+ 		return userConsumerExist;
+ 	}
+ 	public String addPlayListToUser(String consumerUsername, int selectionPlayList, String playListName){
+ 		String msj="The playList canot be added";
+ 		for (int i=0;i<users.size();i++) {
+ 			if(users.get(i)!=null){
+ 				if(users.get(i) instanceof UserConsumer){
+ 					PlayList newPlayList = new PlayList(selectionPlayList,playListName);
+ 					((UserConsumer)(users.get(i))).addPlayList(newPlayList);
+ 					if(((UserConsumer)(users.get(i))).addPlayList(newPlayList)==true){
+ 						msj="The playList has been added"+"\n"+
+ 							"It's code is "+ (((UserConsumer)(users.get(i))).showCodePlayListSong(newPlayList));
+					}	
+ 				}
+ 			}
+ 		}
+ 	return msj;
+ 	}	
 }
 
 

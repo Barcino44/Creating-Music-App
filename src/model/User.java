@@ -4,7 +4,7 @@ public abstract class User{
 	
 	private String username;
 	private String id;
-	private Date vinculationDate;
+	private Date vinculationDate=new Date();
 	
 	public User(String username, String id, Date vinculationDate) {
 		this.username=username;
