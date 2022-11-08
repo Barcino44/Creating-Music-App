@@ -39,7 +39,7 @@ public class NeoTunes {
 		Date vinculationDate = new Date();
 		UserConsumerStandard newConsumerEstandard = new UserConsumerStandard(username, id, vinculationDate);
 		users.add(newConsumerEstandard);
-		msj="New consumer premium added sucefully";
+		msj="New consumer standard added sucefully";
 		return msj;
  	}
  	public String addSong(String productorUsername,int selectionTypeGenre, String name, String album, String albumURL, int duration, double ventValue ){
@@ -111,7 +111,7 @@ public class NeoTunes {
  					((UserConsumer)(users.get(i))).addPlayList(newPlayList);
  					if(((UserConsumer)(users.get(i))).addPlayList(newPlayList)==true){
  						msj="The playList has been added"+"\n"+
- 							"It's code is "+ (((UserConsumer)(users.get(i))).showCodePlayListSong(newPlayList));
+ 							"It's code is "+ (((UserConsumer)(users.get(i))).showCodePlayList(newPlayList));
 					}	
  				}
  			}

@@ -41,8 +41,8 @@ public class Main{
 		return "<<-<< <<-<< Welcome >>->> >>->>\n" +
 			"1.Add an artist \n" +
 			"2.Add an creatorContent \n"+
-			"3.Add a standard consumer \n"+
-			"4.Add a premium consumer\n"+
+			"3.Add a premium consumer  \n"+
+			"4.Add a standard consumer\n"+
 			"5.Add a song\n" +
 			"6.Add a podcast\n"+
 			"7.Add a PlayList\n";
@@ -201,7 +201,7 @@ public class Main{
 					System.out.println("Enter the name of the user who are going to be added the PlayList");
 					username=reader.next();
 					if(neoTunes.validateIfUserConsumerExist(username)!=true){
-						System.out.println("The user doesn't exists");
+						System.out.println("The user doesn't exists or is not a consumer");
 					}
 					else{
 						System.out.println("Enter the type of PlayList that you want to add");

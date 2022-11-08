@@ -26,7 +26,7 @@ public class UserConsumerPremium extends UserConsumer{
 		return posAdded;
 	}
 	@Override
-	public String showCodePlayListSong(PlayList playlist){
+	public String showCodePlayList(PlayList playlist){
 		int posAdded=posPlayList(playlist);
 		int upperBound=9;
 		int lowerBound=0;
@@ -34,23 +34,45 @@ public class UserConsumerPremium extends UserConsumer{
 		String msj="";
 		if(posAdded!=-1){
 			if(playlists.get(posAdded).getSelectionTypePlayList()==1){
-        		for(int j = COLUMNS_SIZE-1; j>=0; j--){
-           			matriz[5][j] = (int)(Math.random()*range)+lowerBound;
-            		msj= msj+ matriz[5][j];
+        		for(int i = ROWS_SIZE-1; i>=0; i--){
+           			matriz[i][0] = (int)(Math.random()*range)+lowerBound;
+            		msj= msj+ matriz[i][0];
 				}
-				for (int i=0;i<ROWS_SIZE ;i++ ) {
-					for(int j=0; i<COLUMNS_SIZE; i++){
-						matriz[i][j] = (int)(Math.random()*range)+lowerBound;
+				for (int i=1;i<ROWS_SIZE-1 ;i++ ) {
+					for(int j=1; j<COLUMNS_SIZE-1; j++){
+						matriz[i][j] =(int)(Math.random()*range)+lowerBound;
 						if(i==j){
 							msj=msj+matriz[i][j];
 						}
 					}
 				}
-				for(int j = COLUMNS_SIZE-1; j>=0; j--){
+				for(int i = ROWS_SIZE-1; i>=0; i--){
+           			matriz[i][5] = (int)(Math.random()*range)+lowerBound;
+            		msj= msj+ matriz[i][5];
+            	}
+			}
+			else if(playlists.get(posAdded).getSelectionTypePlayList()==2){
+				for(int j = 0; j<=2; j++){
+					matriz[0][j] =(int)(Math.random()*range)+lowerBound;
+					msj=msj+matriz[0][j];
+				}		
+				for (int i=1;i<ROWS_SIZE ;i++ ) {
+					matriz[i][2] =(int)(Math.random()*range)+lowerBound;
+					msj=msj+matriz[i][2];
+				}
+				for(int j=3; j<=3; j++){
            			matriz[5][j] = (int)(Math.random()*range)+lowerBound;
             		msj= msj+ matriz[5][j];
             	}
-			}
+            	for(int i=4;i>=0;i--){
+            		matriz[i][3] = (int)(Math.random()*range)+lowerBound;
+            		msj= msj+ matriz[i][3];
+            	}
+            	for (int j=4;j<COLUMNS_SIZE;j++) {
+            		matriz[0][j] = (int)(Math.random()*range)+lowerBound;
+            		msj= msj+ matriz[0][j];
+             	}
+			}		
 		}		
 		return msj;
 	}
