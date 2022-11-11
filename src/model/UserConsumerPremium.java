@@ -72,6 +72,16 @@ public class UserConsumerPremium extends UserConsumer{
             		matriz[0][j] = (int)(Math.random()*range)+lowerBound;
             		msj= msj+ matriz[0][j];
              	}
+			}
+			else{
+				for (int i=ROWS_SIZE-1;i>=0;i-- ) {
+					for (int j=COLUMNS_SIZE-1;j>=0;j--) {
+					matriz[i][j] = (int)(Math.random()*range)+lowerBound;	
+						if (((i+j)%2!=0)&&((i+j)!=1)){
+							msj=msj+matriz[i][j];
+						}
+					}
+				}
 			}		
 		}		
 		return msj;

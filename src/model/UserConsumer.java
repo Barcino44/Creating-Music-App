@@ -21,4 +21,5 @@ public abstract class UserConsumer extends User{
 	public abstract boolean addPlayList(PlayList playlist);
 
 	public abstract String showCodePlayList(PlayList playlist);
+		
 }
