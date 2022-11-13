@@ -49,9 +49,11 @@ public class NeoTunes {
 				int playingTimes=0;
 				int sellingTimes=0;
 				Song newSong = new Song(selectionTypeGenre, name, album, albumURL, duration, ventValue, playingTimes,sellingTimes);
-				((UserProductorArtist)(users.get(i))).addSong(newSong);
-				msj="The song "+ name + " has been added to the user "+ productorUsername;
-			}
+				if(((UserProductorArtist)(users.get(i))).addSong(newSong)==true){
+					msj="The song "+ name + " has been added to the user "+ productorUsername;
+					System.out.println((((UserProductorArtist)(users.get(i))).addSong(newSong)));
+				}
+			}	
 		}
  		return msj;
  	}
@@ -89,35 +91,54 @@ public class NeoTunes {
  		}
  		return creatorContentExist;
  	}
- 	public boolean validateIfUserConsumerExist(String consumerUsername){
- 		boolean userConsumerExist=false;
- 		for (int i=0;i<users.size()&&!userConsumerExist;i++ ) {
+ 	public int validateIfUserConsumerExist(String consumerUsername){
+ 		int consumerPos=-1;
+ 		for (int i=0;i<users.size();i++ ) {
  			if(users.get(i)!=null){	
- 				if(users.get(i) instanceof UserConsumerStandard||users.get(i) instanceof UserConsumerPremium){
+ 				if(users.get(i) instanceof UserConsumer){
 					if(((UserConsumer)(users.get(i))).getUsername().equals(consumerUsername)){
-						userConsumerExist=true;
+						consumerPos=i;
 					}
  				}
  			}
  		}
- 		return userConsumerExist;
+ 		return consumerPos;
  	}
  	public String addPlayListToUser(String consumerUsername, int selectionPlayList, String playListName){
- 		String msj="The playList canot be added";
- 		for (int i=0;i<users.size();i++) {
- 			if(users.get(i)!=null){
- 				if(users.get(i) instanceof UserConsumer){
- 					PlayList newPlayList = new PlayList(selectionPlayList,playListName);
- 					((UserConsumer)(users.get(i))).addPlayList(newPlayList);
- 					if(((UserConsumer)(users.get(i))).addPlayList(newPlayList)==true){
- 						msj="The playList has been added"+"\n"+
- 							"It's code is "+ (((UserConsumer)(users.get(i))).showCodePlayList(newPlayList));
-					}	
- 				}
- 			}
- 		}
+ 		String msj="The playList cannot be added";
+ 		int posUser=validateIfUserConsumerExist(consumerUsername);
+ 		PlayList newPlayList = new PlayList(selectionPlayList,playListName);
+		((UserConsumer)(users.get(posUser))).addPlayList(newPlayList);
+ 			if(((UserConsumer)(users.get(posUser))).addPlayList(newPlayList)==true){
+ 				msj="New playList added\n"+
+ 				(((UserConsumer)(users.get(posUser))).showCodePlaylist(newPlayList));
+			}	
  	return msj;
- 	}	
+ 	}
+
+ 	public boolean validateIfPlaylistExist(String consumerUsername,String playListName){
+ 		boolean playListExist=false;
+ 		int posUser=validateIfUserConsumerExist(consumerUsername);
+ 		if(((UserConsumer)(users.get(posUser))).playlistPosByName(playListName)!=-1){
+ 			playListExist=true;
+ 		}
+ 		System.out.println(playListExist);
+ 		return playListExist;
+ 	} 
+ 	public String showInformationOfAudios(String consumerUsername,String playListName){
+ 		String msj="";
+ 		int posUser=validateIfUserConsumerExist(consumerUsername);
+ 		msj=((UserConsumer)(users.get(posUser))).showInformation(playListName);
+ 		return msj;
+ 	}
+ 	public String showCodeWithMatriz(String consumerUsername, String playListName, String consumerUsernameToShare){
+ 		String msj="";
+ 		int posUser=validateIfUserConsumerExist(consumerUsername);
+ 		msj="\n"+((UserConsumer)(users.get(posUser))).showCodeAndMatrizWithPlayListName(playListName)+"\n"+
+ 		"Playlist share successfully to the user"+ consumerUsernameToShare;
+ 		return msj;
+ 	}
+ 	//public String addAudiosToPlaylist(String consumerUsername, String playListCode, int selectionAudioToadd){	//}
 }
 
 

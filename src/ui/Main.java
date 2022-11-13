@@ -45,7 +45,10 @@ public class Main{
 			"4.Add a standard consumer\n"+
 			"5.Add a song\n" +
 			"6.Add a podcast\n"+
-			"7.Add a PlayList\n";
+			"7.Add a PlayList\n"+
+			"8.Add audio in Playlist\n"+
+			"9.Eliminate audio in Playlist\n"+
+			"10.Share playlist";
 	}
 	public void executeOption(int option){
 			String username="";
@@ -77,7 +80,8 @@ public class Main{
 									  "1.SONGS\n"+
 									  "2.PODCAST\n"+
 									  "3.BOTH";
-
+			String playlistCode="";
+			String usernameToShare="";
 			String msj="";
 			switch(option){
 				case 1:
@@ -200,7 +204,7 @@ public class Main{
 				case 7:
 					System.out.println("Enter the name of the user who are going to be added the PlayList");
 					username=reader.next();
-					if(neoTunes.validateIfUserConsumerExist(username)!=true){
+					if(neoTunes.validateIfUserConsumerExist(username)==-1){
 						System.out.println("The user doesn't exists or is not a consumer");
 					}
 					else{
@@ -223,8 +227,51 @@ public class Main{
 						msj=neoTunes.addPlayListToUser(username,selectionTypePlayList,playListName);
 						System.out.println(msj);
 					}
-				break;
+					break;
+				case 8:
+					System.out.println("Enter the name of the user consumer");
+					username=reader.next();
+					if(neoTunes.validateIfUserConsumerExist(username)==-1){
+						System.out.println("The user doesn't exists or is not a consumer");
+					}
+					else if(neoTunes.validateIfUserConsumerExist(username)!=-1){
+						System.out.println("Enter the playlist name");
+						playListName=reader.next();
+						if(neoTunes.validateIfPlaylistExist(username,playListName)==false){
+							System.out.println("The Playlist doesn't exist");
+						}
+						else{
+						System.out.println("Enter the audio that you want to add");
+						System.out.println(neoTunes.showInformationOfAudios(username,playlistCode));
+						}
+					}
 
+				break;
+				case 10:
+					System.out.println("Enter the name of the user consumer");
+					username=reader.next();
+					if(neoTunes.validateIfUserConsumerExist(username)==-1){
+						System.out.println("The user doesn't exists or is not a consumer");
+					}
+					else if(neoTunes.validateIfUserConsumerExist(username)!=-1){
+						System.out.println("Enter the playlist name");
+						playListName=reader.next();
+						if(neoTunes.validateIfPlaylistExist(username,playListName)==false){
+							System.out.println("The Playlist doesn't exist");
+						}
+						else{
+							System.out.println("Enter the name of the user which you want to share the song");
+							usernameToShare=reader.next();
+							if(neoTunes.validateIfUserConsumerExist(usernameToShare)==-1){
+								System.out.println("The user to share doesn't exists or is not a consumer");
+							}
+							else{	
+								msj=neoTunes.showCodeWithMatriz(username,playListName,usernameToShare);
+								System.out.println(msj);
+							}
+						}
+					}
+					break;
 				case 0: 
 					System.out.println("Exit program.");
 					break; 
