@@ -28,6 +28,7 @@ public abstract class UserConsumer extends User{
 	public abstract int getTypePlaylist(String playlistName);
 	public abstract boolean addAudiotoPlayList(String playlistName, Audio audio);
 	public abstract boolean deleteAudioInPlaylist(String playlistName,String audioName);
+	public abstract String playAudioInPlaylist(String playlistName, String audioName);
 	//public abstract String 
 	//{
 	//public abstract String showCodeWithPlayListName(String playlistName);

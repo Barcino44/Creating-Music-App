@@ -121,15 +121,52 @@ public class PlayList{
 		}
 		return msj;
 	}
-	public boolean deleteAudio(String audioName){
-		boolean isdelete=false;
+	public int searchPosAudioByName(String audioName){
+		boolean isFound=false;
+		int pos=-1;
 		for (int i=0;i<audios.size() ;i++ ) {
 			if(audios.get(i).getName().equals(audioName)){
-				audios.remove(i);
-				isdelete=true;
+				pos=i;
+				isFound=true;
 			}
 		}
+		return pos;
+	}
+	public boolean deleteAudio(String audioName){
+		boolean isdelete=false;
+		int pos=searchPosAudioByName(audioName);
+		audios.remove(pos);
+		isdelete=true;
 		return isdelete;
+	}
+	public void playingTimesOfAudio(String audioName){
+		int pos=searchPosAudioByName(audioName);
+		int count=audios.get(pos).getPlayingTimes();
+		audios.get(pos).setPlayingTimes(count+1);
+	}
+	public int totalTimesOfPlaylist(){
+		int count=0;
+		for (int i=0;i<audios.size() ;i++ ) {
+			count=count+audios.get(i).getPlayingTimes();
+		}
+		return count;
+	}
+	public String playAudio(String audioName){
+		int pos=searchPosAudioByName(audioName);
+		return "Now listening\n"+
+				audios.get(pos).getName();
+
+	}
+	public int showTypeAudiotoPlay(String audioName){
+		int typeAudio=-1;
+		int pos=searchPosAudioByName(audioName);
+		if(audios.get(pos)instanceof Song){
+			typeAudio=1;
+		}
+		else{
+			typeAudio=2;
+		}
+		return typeAudio;
 	}
 	// public String showSongsToAdd(){
 	// 	String msj="";

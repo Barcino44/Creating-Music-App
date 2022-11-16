@@ -49,7 +49,7 @@ public class Main{
 			"8.Add audio in Playlist\n"+
 			"9.Delete audio in Playlist\n"+
 			"10.Share playlist\n"+
-			"11.Buy A song";
+			"11.Play an audio according a playlist";
 	}
 	public void executeOption(int option){
 			String username="";
@@ -243,9 +243,12 @@ public class Main{
 							System.out.println("The Playlist doesn't exist");
 						}
 						else if(neoTunes.validateIfPlaylistExist(username,playListName)==true){
-							System.out.println("Enter the audio that you want to add");
+							System.out.println("Enter the audio that you want to add\n");
+							System.out.println("The possible audios to add are:\n");
 							System.out.println(neoTunes.showInformationOfAudios(username,playListName));
+							System.out.println(".....................");
 							selectionAudio=reader.next();
+							System.out.println(".....................");
 							if(neoTunes.validateIfSelectedAudioExist(username,playListName,selectionAudio)==false){
 								System.out.println("The audio can't be added");
 							}
@@ -269,13 +272,16 @@ public class Main{
 							System.out.println("The Playlist doesn't exist");
 						}
 						else if(neoTunes.validateIfPlaylistExist(username,playListName)==true){
-							if(neoTunes.showSongsAddedInPlaylist(username,playListName).equals("")){
+							if(neoTunes.showAudiosAddedInPlaylist(username,playListName).equals("")){
 								System.out.println("You have not added an audio in the playlist yet");
 							}
 							else{
-								System.out.println("Enter the audio that you want to delete");
-								System.out.println(neoTunes.showSongsAddedInPlaylist(username,playListName));
+								System.out.println("Enter the audio that you want to delete\n");
+								System.out.println("The possible audios to delete are:\n");
+								System.out.println(neoTunes.showAudiosAddedInPlaylist(username,playListName));
+								System.out.println(".....................");
 								selectionAudio=reader.next();
+								System.out.println(".....................");
 								msj=neoTunes.deleteAudioInPlaylist(username,playListName, selectionAudio);
 								System.out.println(msj);
 							}
@@ -307,6 +313,38 @@ public class Main{
 						}
 					}
 					break;
+				case 11:
+					System.out.println("Enter the name of the user consumer");
+					username=reader.next();
+					if(neoTunes.validateIfUserConsumerExist(username)==-1){
+						System.out.println("The user doesn't exists or is not a consumer");
+					}
+					else{
+						if(neoTunes.validateIfUserConsumerExist(username)!=-1){
+						System.out.println("Enter the playlist name");
+						playListName=reader.next();
+						if(neoTunes.validateIfPlaylistExist(username,playListName)==false){
+							System.out.println("The Playlist doesn't exist");
+						}
+						else{
+							if(neoTunes.showAudiosAddedInPlaylist(username,playListName).equals("")){
+								System.out.println("You have not added an audio in the playlist yet");
+							}
+							else{
+								System.out.println("Enter the audio that you want to play\n");
+								System.out.println("The possible audios to play are:\n");
+								System.out.println(neoTunes.showAudiosAddedInPlaylist(username,playListName));
+								System.out.println(".....................");
+								selectionAudio=reader.next();
+								System.out.println(".....................");
+								msj=neoTunes.playAudioInPlaylist(username,playListName, selectionAudio);
+								System.out.println(msj);
+								}
+							}
+						}
+					}
+					break;
+					
 				case 0: 
 					System.out.println("Exit program.");
 					break; 

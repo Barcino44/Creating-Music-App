@@ -31,7 +31,7 @@ public abstract class Audio{
 	public int getPlayingTimes(){
 		return playingTimes;
 	}
-	public void setPlayingTimes(){
+	public void setPlayingTimes(int playingTimes){
 		this.playingTimes=playingTimes;
 	}
 }

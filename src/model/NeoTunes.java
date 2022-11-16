@@ -10,10 +10,10 @@ public class NeoTunes {
  	public NeoTunes(String name){
  		users= new ArrayList<User>(10);
  		audios=new ArrayList<Audio>(10);
- 		Song newSong1 = new Song(1,"El_sol_no_regresa","Flores de alquiler","www.floresdealquiler.com",300,56,485,55);
-		Song newSong2 = new Song(1,"De_musica_ligera","cancion animal","www.cancionAnimal.com",8,77,8,89);
-		Podcast newPodcast1 = new Podcast(1,"Mi primera vez en plants vs zombies","Ven y te cuento de este maravilloso juego","www.JuanitoElGamer.com",46,56);
-		Podcast newPodcast2 = new Podcast(3,"La verdad detras de los ingenieros","Larga vida a los ingenieros","www.verdadIngeniera.com",8,77);
+ 		Song newSong1 = new Song(1,"El_sol_no_regresa","Flores de alquiler","www.floresdealquiler.com",300,56,0,55);  //Free use song                                                                                        
+		Song newSong2 = new Song(1,"De_musica_ligera","cancion animal","www.cancionAnimal.com",8,77,0,89);	//Free use song
+		Podcast newPodcast1 = new Podcast(1,"El_Miedo_Al_Exito","Ven y te cuento de este maravilloso juego","www.JuanitoElGamer.com",46,0);  //Free use podcast
+		Podcast newPodcast2 = new Podcast(3,"La_verdad_detras_de_los_ingenieros","Larga vida a los ingenieros","www.verdadIngeniera.com",8,0); //Free use podcast
 		audios.add(newSong1);
 		audios.add(newSong2);
 		audios.add(newPodcast1);
@@ -132,7 +132,6 @@ public class NeoTunes {
  		if(((UserConsumer)(users.get(posUser))).playlistPosByName(playListName)!=-1){
  			playListExist=true;
  		}
- 		//System.out.println(playListExist);
  		return playListExist;
  	} 
  	public String showInformationOfAudios(String consumerUsername,String playListName){
@@ -189,14 +188,14 @@ public class NeoTunes {
 			if(audios.get(i).getName().equals(selectedAudio)){
 				Audio newAudiotoPlayList=(audios.get(i));//.getselectionTypeCategory(),audios.get(i).getName(),audios.get(i).getDescription(),audios.get )
 				if(((UserConsumer)(users.get(posUser))).addAudiotoPlayList(playlistName,newAudiotoPlayList)==true){
-					msj="The audio "+selectedAudio+" was added successfully to the playlist "+playlistName+" of the consumer" + consumerUsername;
+					msj="The audio "+selectedAudio+" was added successfully to the playlist "+playlistName+" of the consumer " + consumerUsername;
 				}
 			}
 		}
 		return msj;
 	}
 
-	public String showSongsAddedInPlaylist(String consumerUsername, String playlistName){
+	public String showAudiosAddedInPlaylist(String consumerUsername, String playlistName){
 		String msj="";
 		int posUser=validateIfUserConsumerExist(consumerUsername);
 		msj=(((UserConsumer)(users.get(posUser))).showAudiosAddedInPlaylist(playlistName));
@@ -210,68 +209,25 @@ public class NeoTunes {
 		}
 		return msj;
 	}
-	// public String deleteAudiosToPlaylist(String consumerUsername, String playlistName, String selectedAudio){
-	// 	int posUser=validateIfUserConsumerExist(consumerUsername);
 
-	// }	
+	public String playAudioInPlaylist(String consumerUsername, String playlistName, String selectedAudio){
+		String msj="";
+		int posUser=validateIfUserConsumerExist(consumerUsername);
+		if((((UserConsumer)(users.get(posUser))).playAudioInPlaylist(playlistName,selectedAudio)!=""))
+			msj=(((UserConsumer)(users.get(posUser))).playAudioInPlaylist(playlistName,selectedAudio));
+		else{
+			msj="The audio cannot be played";
+		}
+		return msj;
+	}
 
-	// public String addAudiosToPlaylist(String consumerUsername, String playlistName, String selectedAudio){
-	// 	String msj="";
-	// 	int posUser=validateIfUserConsumerExist(consumerUsername);
-	// 		for (int i=0;i<audios.size() ;i++ ) {
-	// 			if(audios.get(i).getName().equals(selectedAudio)){
-	// 				 if(audios.get(i) instanceof Podcast){
-	// 					Audio newPodcastToPlaylist=(audios.get(i));//.getselectionTypeCategory(),audios.get(i).getName(),audios.get(i).getDescription(),audios.get )
-	// 					if(((UserConsumer)(users.get(posUser))).addAudiotoPlayList(playlistName,newPodcastToPlaylist)==true){
-	// 						msj="Added successfully";
-	// 					}
-	// 				}
-	// 				else{
-	// 					Audio newSongToPlaylist=(audios.get(i));
-	// 					if(((UserConsumer)(users.get(posUser))).addAudiotoPlayList(playlistName,newSongToPlaylist)==true){
-	// 						msj="Added successfully";
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	return msj;
-	// 	}	
-
-
- // 	public String showSongsToAdd(){
-	// 	String msj="";
-	// 	for (int i=0;i<audios.size() ;i++ ) {
-	// 		if(audios.get(i) instanceof Song){
-	// 			msj=msj+audios.get(i).getName()+"\n";
-	// 			System.out.println(audios.get(i).getName());
-	// 		}			 
-	// 	}
-	// return msj;
-	// }
-	// public String showPodcastsToAdd(){
-	// 	String msj="";
-	// 	for (int i=0;i<audios.size() ;i++ ) {
-	// 		if(audios.get(i) instanceof Podcast){
-	// 			msj=msj+audios.get(i).getName()+"\n";
-	// 		}			 
-	// 	}
-	// return msj;
-	// } 
-	// public String showBothPodcastAndSongs(){
-	// 	String msj="";
-	// 	for (int i=0;i<audios.size() ;i++ ) {
-	// 		msj=msj+audios.get(i).getName()+"\n";
-	// 	}
-	// return msj;
-	// }
  	public String showCodeWithMatriz(String consumerUsername, String playListName, String consumerUsernameToShare){
  		String msj="";
  		int posUser=validateIfUserConsumerExist(consumerUsername);
  		msj="\n"+((UserConsumer)(users.get(posUser))).showCodeAndMatrizWithPlayListName(playListName)+"\n"+
- 		"Playlist share successfully to the user"+ consumerUsernameToShare;
+ 		"Playlist share successfully to the user "+ consumerUsernameToShare;
  		return msj;
  	}
- 	//public String addAudiosToPlaylist(String consumerUsername, String playListCode, int selectionAudioToadd){	//}
 }
 
 

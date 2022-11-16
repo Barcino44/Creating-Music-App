@@ -87,9 +87,20 @@ public class UserConsumerPremium extends UserConsumer{
 	public boolean deleteAudioInPlaylist(String playlistName,String audioName){
 		boolean exist=false;
 		int pos=playlistPosByName(playlistName);
-		if(playlists.get(pos).deleteAudio(audioName)==true){
-			exist=true;
+		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){
+			if(playlists.get(pos).deleteAudio(audioName)==true){
+				exist=true;
+			}
 		}
 		return exist;
+	}
+	@Override
+	public String playAudioInPlaylist(String playlistName,String audioName){
+		String msj="";
+		int pos=playlistPosByName(playlistName);
+		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){
+			msj=playlists.get(pos).playAudio(audioName);
+		}
+	return msj;
 	}
 }

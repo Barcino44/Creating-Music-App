@@ -2,7 +2,7 @@ package model;
 import java.util.Date;
 import java.util.ArrayList;
 import java.lang.Math;
-public class UserConsumerStandard extends UserConsumer{
+public class UserConsumerStandard extends UserConsumer implements Announciable{
 
 	public static final int PLAYLIST_SIZE = 20; 
 	public static final int SONGS_SIZE = 100;
@@ -94,10 +94,47 @@ public class UserConsumerStandard extends UserConsumer{
 	public boolean deleteAudioInPlaylist(String playlistName,String audioName){
 		boolean exist=false;
 		int pos=playlistPosByName(playlistName);
-		if(playlists.get(pos).deleteAudio(audioName)==true){
-			exist=true;
+		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){
+			if(playlists.get(pos).deleteAudio(audioName)==true){
+				exist=true;
+			}
 		}
 		return exist;
 	}
+	@Override
+	public String playAd(){
+		String msj="Wait....\n"+
+					"Playing ad\n";
+		int randomicAdd=(int)Math.random()*4+1;
+		if(randomicAdd==1){
+			msj=msj+"Nike - Just Do It\n"+
+				"The ad has been finished";
 
+		}
+		else if(randomicAdd==2){
+			msj=msj+"Coca-Cola - Open Happiness\n"+
+				"The ad has been finished";
+		}
+		else{
+			msj=msj+"M&Ms - Melts in Your Mouth, Not in Your Hands\n"+
+				"The ad has been finished";
+		}
+		return msj;
+	}
+	@Override
+	public String playAudioInPlaylist(String playlistName,String audioName){
+		String msj="";							
+		int pos=playlistPosByName(playlistName);
+		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){
+			playlists.get(pos).playingTimesOfAudio(audioName);        
+			if((playlists.get(pos).totalTimesOfPlaylist()%3==0&&playlists.get(pos).showTypeAudiotoPlay(audioName)==1)||(playlists.get(pos).showTypeAudiotoPlay(audioName)==2)){
+				msj=playAd()+"\n"+
+				playlists.get(pos).playAudio(audioName);
+			}
+			else{
+				msj=playlists.get(pos).playAudio(audioName);
+			}
+		}
+	return msj;
+	}
 }
