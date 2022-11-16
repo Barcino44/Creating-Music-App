@@ -52,20 +52,20 @@ public class UserConsumerStandard extends UserConsumer{
 		return pos;
 	}
 	@Override
-	public String showInformation(String playlistName){
-		String msj="";
+	public int getTypePlaylist(String playlistName){
+		int number=-1;
 		int pos=playlistPosByName(playlistName);
-		if(playlists.get(pos).getSelectionTypePlayList()==1){
-			msj=playlists.get(pos).showSongsToAdd();
+			if(playlists.get(pos).getSelectionTypePlayList()==1){
+				number=1;
+			}
+			else if(playlists.get(pos).getSelectionTypePlayList()==2){
+				number=2;	
+			}
+			else{
+				number=3;
+			}
+		return number;
 		}
-		else if(playlists.get(pos).getSelectionTypePlayList()==2){
-			msj=playlists.get(pos).showPodcastsToAdd();	
-		}
-		else{
-			msj=playlists.get(pos).showBothPodcastAndSongs();
-		}
-		return msj;
-	}
 	@Override
 	public String showCodeAndMatrizWithPlayListName(String playlistName){
 		String msj="";
@@ -76,4 +76,28 @@ public class UserConsumerStandard extends UserConsumer{
 		}
 	return msj;
 	}
+	@Override
+	public boolean addAudiotoPlayList(String playlistName, Audio audio){
+		boolean isAdded=false;
+		int pos=playlistPosByName(playlistName);
+		isAdded=playlists.get(pos).addAudio(audio);
+		return isAdded;
+	}
+	@Override 
+	public String showAudiosAddedInPlaylist(String playlistName){
+		String msj="";
+		int pos=playlistPosByName(playlistName);
+		msj=playlists.get(pos).listAudios();
+		return msj;
+	}
+	@Override
+	public boolean deleteAudioInPlaylist(String playlistName,String audioName){
+		boolean exist=false;
+		int pos=playlistPosByName(playlistName);
+		if(playlists.get(pos).deleteAudio(audioName)==true){
+			exist=true;
+		}
+		return exist;
+	}
+
 }

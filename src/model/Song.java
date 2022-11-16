@@ -53,4 +53,7 @@ public class Song extends Audio{
 	public void setSellingTimes(int sellingTimes){
 		this.sellingTimes=sellingTimes;
 	}
+	public String getName(){
+		return super.getName();
+	}
 }

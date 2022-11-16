@@ -15,10 +15,6 @@ public class PlayList{
 		this.playListName=playListName;
 		matriz= new int[ROWS_SIZE][COLUMNS_SIZE];
 		audios= new ArrayList<Audio>(10);
-		Song newSong1 = new Song(1,"Numb","jk","yujik",46,56,485,55);
-		Song newSong2 = new Song(2,"De musica Ligera","62","6",8,77,8,89);
-		audios.add(newSong1);
-		audios.add(newSong2);
 	}
 	public int getSelectionTypePlayList() {
 		return selectionTypePlayList;
@@ -115,33 +111,51 @@ public class PlayList{
 			}
 	return msj;
 	}
-	public String showSongsToAdd(){
-		String msj="";
-		for (int i=0;i<audios.size() ;i++ ) {
-			if(audios.get(i) instanceof Song){
-				msj=msj+audios.get(i).getName()+"\n";
-			}			 
-		}
-	return msj;
+	public boolean addAudio(Audio audio){
+		return audios.add(audio);
 	}
-	public String showPodcastsToAdd(){
+	public String listAudios(){
 		String msj="";
-		for (int i=0;i<audios.size() ;i++ ) {
-			if(audios.get(i) instanceof Podcast){
-				msj=msj+audios.get(i).getName()+"\n";
-			}			 
-		}
-	return msj;
-	} 
-	public String getCodePlaylist(){
-		return showCodePlaylist();
-	}
-	public String showBothPodcastAndSongs(){
-		String msj="";
-		for (int i=0;i<audios.size() ;i++ ) {
+		for (int i=0;i<audios.size();i++ ) {
 			msj=msj+audios.get(i).getName()+"\n";
 		}
-	return msj;
+		return msj;
 	}
+	public boolean deleteAudio(String audioName){
+		boolean isdelete=false;
+		for (int i=0;i<audios.size() ;i++ ) {
+			if(audios.get(i).getName().equals(audioName)){
+				audios.remove(i);
+				isdelete=true;
+			}
+		}
+		return isdelete;
+	}
+	// public String showSongsToAdd(){
+	// 	String msj="";
+	// 	for (int i=0;i<audios.size() ;i++ ) {
+	// 		if(audios.get(i) instanceof Song){
+	// 			msj=msj+audios.get(i).getName()+"\n";
+	// 			System.out.println(audios.get(i).getName());
+	// 		}			 
+	// 	}
+	// return msj;
+	// }
+	// public String showPodcastsToAdd(){
+	// 	String msj="";
+	// 	for (int i=0;i<audios.size() ;i++ ) {
+	// 		if(audios.get(i) instanceof Podcast){
+	// 			msj=msj+audios.get(i).getName()+"\n";
+	// 		}			 
+	// 	}
+	// return msj;
+	// } 
+	// public String showBothPodcastAndSongs(){
+	// 	String msj="";
+	// 	for (int i=0;i<audios.size() ;i++ ) {
+	// 		msj=msj+audios.get(i).getName()+"\n";
+	// 	}
+	// return msj;
+	// }
 }
 
