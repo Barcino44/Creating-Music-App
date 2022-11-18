@@ -5,14 +5,23 @@ import java.lang.Math;
 public class UserConsumerStandard extends UserConsumer implements Announciable{
 
 	public static final int PLAYLIST_SIZE = 20; 
-	public static final int SONGS_SIZE = 100;
+	public static final int SONGS_SIZE = 90;
+	private int boughtSongs;
 	private int[][] matriz;
 	private ArrayList<PlayList> playlists;
 
-	public UserConsumerStandard(String username, String id, Date vinculationDate) {
+	public UserConsumerStandard(String username, String id, int boughtSongs, Date vinculationDate) {
 		super(username, id, vinculationDate);
+		this.boughtSongs=boughtSongs;
 		playlists= new ArrayList<PlayList>(10);
 		matriz=new int[ROWS_SIZE][COLUMNS_SIZE];
+	}
+
+	public int getBoughtSongs(){
+		return boughtSongs;
+	}
+	public void setBougthSongs(int boughtSongs){
+		this.boughtSongs=boughtSongs;
 	}
 	@Override
 	public boolean addPlayList(PlayList playlist){
@@ -105,19 +114,19 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 	public String playAd(){
 		String msj="Wait....\n"+
 					"Playing ad\n";
-		int randomicAdd=(int)Math.random()*4+1;
+		int randomicAdd=(int)(Math.random()*4+1);
 		if(randomicAdd==1){
 			msj=msj+"Nike - Just Do It\n"+
-				"The ad has been finished";
+				"The ad has finished\n";
 
 		}
 		else if(randomicAdd==2){
 			msj=msj+"Coca-Cola - Open Happiness\n"+
-				"The ad has been finished";
+				"The ad has finished\n";
 		}
 		else{
 			msj=msj+"M&Ms - Melts in Your Mouth, Not in Your Hands\n"+
-				"The ad has been finished";
+				"The ad has finished\n";
 		}
 		return msj;
 	}
@@ -136,5 +145,16 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 			}
 		}
 	return msj;
+	}
+	@Override
+	public boolean validateIfSongCanbeBought(String songName){
+		boolean isBought=false;
+		int count=getBoughtSongs();
+		if(SONGS_SIZE>count){
+			setBougthSongs(count+1);
+			isBought=true;
+		}
+		return isBought;
+
 	}
 }

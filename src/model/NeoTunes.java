@@ -10,10 +10,10 @@ public class NeoTunes {
  	public NeoTunes(String name){
  		users= new ArrayList<User>(10);
  		audios=new ArrayList<Audio>(10);
- 		Song newSong1 = new Song(1,"El_sol_no_regresa","Flores de alquiler","www.floresdealquiler.com",300,56,0,55);  //Free use song                                                                                        
-		Song newSong2 = new Song(1,"De_musica_ligera","cancion animal","www.cancionAnimal.com",8,77,0,89);	//Free use song
-		Podcast newPodcast1 = new Podcast(1,"El_Miedo_Al_Exito","Ven y te cuento de este maravilloso juego","www.JuanitoElGamer.com",46,0);  //Free use podcast
-		Podcast newPodcast2 = new Podcast(3,"La_verdad_detras_de_los_ingenieros","Larga vida a los ingenieros","www.verdadIngeniera.com",8,0); //Free use podcast
+ 		Song newSong1 = new Song(1,"El_sol_no_regresa","Flores de alquiler","www.floresdealquiler.com",300,56,0,0);  //Free use song                                                                                        
+		Song newSong2 = new Song(1,"De_musica_ligera","cancion animal","www.cancionAnimal.com",350,70,0,0);	//Free use song
+		Podcast newPodcast1 = new Podcast(1,"El_Miedo_Al_Exito","Ven y te cuento de este maravilloso juego","www.JuanitoElGamer.com",2000,0);  //Free use podcast
+		Podcast newPodcast2 = new Podcast(3,"La_verdad_detras_de_los_ingenieros","Larga vida a los ingenieros","www.verdadIngeniera.com",1500,0); //Free use podcast
 		audios.add(newSong1);
 		audios.add(newSong2);
 		audios.add(newPodcast1);
@@ -47,7 +47,8 @@ public class NeoTunes {
  	public String addUserConsumerStandard(String username, String id){
  		String msj="";
 		Date vinculationDate = new Date();
-		UserConsumerStandard newConsumerEstandard = new UserConsumerStandard(username, id, vinculationDate);
+		int bougthSongs=0;
+		UserConsumerStandard newConsumerEstandard = new UserConsumerStandard(username, id, bougthSongs, vinculationDate);
 		users.add(newConsumerEstandard);
 		msj="New consumer standard added sucefully";
 		return msj;
@@ -228,6 +229,42 @@ public class NeoTunes {
  		"Playlist share successfully to the user "+ consumerUsernameToShare;
  		return msj;
  	}
+ 	public String showSongsToBuy(){
+ 		String msj="";
+ 		for (int i=0;i<audios.size();i++) {
+ 			if(audios.get(i) instanceof Song){
+ 				msj=msj+"\n"+audios.get(i).getName();
+ 			}
+ 		}
+ 		return msj;
+ 	}
+ 	public boolean validateIfSelectedSongExist(String nameSong){
+ 		boolean songExist=false;
+ 		for (int i=0;i<audios.size();i++ ) {
+ 			if(audios.get(i)instanceof Song){
+ 				if(audios.get(i).getName().equals(nameSong)){
+ 					songExist=true;
+ 				}
+ 			}
+ 		}
+ 		return songExist;
+ 	}
+ 	public String buySong(String consumerUsername, String nameSong){
+ 		String msj="The song cannot be bought";
+ 		int count=0;
+ 		int posUser=validateIfUserConsumerExist(consumerUsername);
+ 		if(((UserConsumer)(users.get(posUser))).validateIfSongCanbeBought(nameSong)==true){
+ 			for (int i=0;i<audios.size();i++ ) {
+ 				if(audios.get(i)instanceof Song){
+ 					if(audios.get(i).getName().equals(nameSong)){
+ 						count=(((Song)(audios.get(i))).getSellingTimes());
+ 						((Song)(audios.get(i))).setSellingTimes(count+1);
+ 						msj="The song "+nameSong+" has been bought by the user "+consumerUsername;
+ 					}
+ 				}
+ 			}	
+ 		}
+  	return msj;
+ 	}
 }
-
 

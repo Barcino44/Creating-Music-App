@@ -49,7 +49,8 @@ public class Main{
 			"8.Add audio in Playlist\n"+
 			"9.Delete audio in Playlist\n"+
 			"10.Share playlist\n"+
-			"11.Play an audio according a playlist";
+			"11.Play an audio according a playlist\n"+
+			"12.Buy a song";
 	}
 	public void executeOption(int option){
 			String username="";
@@ -149,7 +150,7 @@ public class Main{
 						albumSong=reader.next();
 						System.out.println("Enter the album's url ");
 						albumURLSong=reader.next();
-						System.out.println("Enter the duration of the song");
+						System.out.println("Enter the duration (in seconds) of the song");
 						while(!reader.hasNextInt()){
 							reader.next();
 							System.out.println("Invalid, enter an integer");
@@ -192,7 +193,7 @@ public class Main{
 						descriptionPodcast=reader.next();
 						System.out.println("Enter the podcast's url ");
 						urlPodcast=reader.next();
-						System.out.println("Enter the duration of the podcast");
+						System.out.println("Enter the duration (in seconds) of the podcast");
 						while(!reader.hasNextInt()){
 							reader.next();
 							System.out.println("Invalid, enter an integer");
@@ -344,7 +345,27 @@ public class Main{
 						}
 					}
 					break;
-					
+				case 12:
+					System.out.println("Enter the name of the user consumer who is going to buy the song");
+					username=reader.next();
+					if(neoTunes.validateIfUserConsumerExist(username)==-1){
+						System.out.println("The user doesn't exists or is not a consumer");
+					}
+					else{
+						System.out.println("Enter the name of song that you want to buy");
+						System.out.println(neoTunes.showSongsToBuy());
+						System.out.println(".....................");
+						selectionAudio=reader.next();
+						System.out.println(".....................");
+						if (neoTunes.validateIfSelectedSongExist(selectionAudio)==false){
+							System.out.println("The song doesn't exist");
+						}
+						else{
+							msj=neoTunes.buySong(username,selectionAudio);
+							System.out.println(msj);
+						}
+					}
+					break;
 				case 0: 
 					System.out.println("Exit program.");
 					break; 

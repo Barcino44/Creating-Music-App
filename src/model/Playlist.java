@@ -154,7 +154,8 @@ public class PlayList{
 	public String playAudio(String audioName){
 		int pos=searchPosAudioByName(audioName);
 		return "Now listening\n"+
-				audios.get(pos).getName();
+				audios.get(pos).getName()+"\n"+
+				"The audio has finished";
 
 	}
 	public int showTypeAudiotoPlay(String audioName){

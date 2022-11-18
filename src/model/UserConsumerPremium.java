@@ -103,4 +103,8 @@ public class UserConsumerPremium extends UserConsumer{
 		}
 	return msj;
 	}
+	@Override
+	public boolean validateIfSongCanbeBought(String songName){
+		return true;
+	}
 }
