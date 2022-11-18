@@ -139,10 +139,12 @@ public class PlayList{
 		isdelete=true;
 		return isdelete;
 	}
-	public void playingTimesOfAudio(String audioName){
+	public void setplayingTimesOfAudio(String audioName){
 		int pos=searchPosAudioByName(audioName);
+		System.out.println("Antes "+audios.get(pos).getPlayingTimes());
 		int count=audios.get(pos).getPlayingTimes();
 		audios.get(pos).setPlayingTimes(count+1);
+		System.out.println("Despues " +audios.get(pos).getPlayingTimes());
 	}
 	public int totalTimesOfPlaylist(){
 		int count=0;
@@ -169,6 +171,56 @@ public class PlayList{
 		}
 		return typeAudio;
 	}
+
+	public int numberTimesListenedRock(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Song){
+				if(((Song)(audios.get(i))).getSelectionTypeGenre()==1){
+					count=count+((Song)(audios.get(i))).getPlayingTimes();
+					System.out.println(count);
+				}	
+			}
+		}
+		return count;
+	}
+
+	public int numberTimesListenedPop(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Song){
+				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.POP){
+					count=count+audios.get(i).getPlayingTimes();
+				}	
+			}
+		}
+		return count;
+	}
+
+	public int numberTimesListenedTrap(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Song){
+				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.TRAP){
+					count=count+audios.get(i).getPlayingTimes();
+				}	
+			}
+		}
+		return count;
+	}
+
+	public int numberTimesListenedHouse(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Song){
+				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.HOUSE){
+					count=count+audios.get(i).getPlayingTimes();
+				}	
+			}
+		}
+		return count;
+	}
+
 	// public String showSongsToAdd(){
 	// 	String msj="";
 	// 	for (int i=0;i<audios.size() ;i++ ) {

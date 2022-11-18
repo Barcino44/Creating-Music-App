@@ -266,5 +266,11 @@ public class NeoTunes {
  		}
   	return msj;
  	}
+ 	public String showMostListenedGenreInUser(String consumerUsername){
+ 		String msj="";
+ 		int posUser=validateIfUserConsumerExist(consumerUsername);
+ 		msj=((UserConsumer)(users.get(posUser))).showMostListenedSongGenre();
+ 		return msj;
+ 	}
 }
 

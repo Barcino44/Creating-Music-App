@@ -30,6 +30,7 @@ public abstract class UserConsumer extends User{
 	public abstract boolean deleteAudioInPlaylist(String playlistName,String audioName);
 	public abstract String playAudioInPlaylist(String playlistName, String audioName);
 	public abstract boolean validateIfSongCanbeBought(String songName);
+	public abstract String showMostListenedSongGenre();
 	//public abstract String 
 	//{
 	//public abstract String showCodeWithPlayListName(String playlistName);

@@ -23,6 +23,9 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 	public void setBougthSongs(int boughtSongs){
 		this.boughtSongs=boughtSongs;
 	}
+	public String getName(){
+		return super.getUsername();
+	}
 	@Override
 	public boolean addPlayList(PlayList playlist){
 		boolean isAdded=false;
@@ -135,7 +138,7 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 		String msj="";							
 		int pos=playlistPosByName(playlistName);
 		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){
-			playlists.get(pos).playingTimesOfAudio(audioName);        
+			playlists.get(pos).setplayingTimesOfAudio(audioName);        
 			if((playlists.get(pos).totalTimesOfPlaylist()%3==0&&playlists.get(pos).showTypeAudiotoPlay(audioName)==1)||(playlists.get(pos).showTypeAudiotoPlay(audioName)==2)){
 				msj=playAd()+"\n"+
 				playlists.get(pos).playAudio(audioName);
@@ -156,5 +159,35 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 		}
 		return isBought;
 
+	}
+	@Override
+	public String showMostListenedSongGenre(){
+		String msj="";
+		int countRock=0;
+		int countPop=0;
+		int countTrap=0;
+		int countHouse=0;
+		for (int i=0;i<playlists.size();i++ ) {
+			countRock=countRock+playlists.get(i).numberTimesListenedRock();
+			countPop=countPop+playlists.get(i).numberTimesListenedPop();
+			countTrap=countTrap+playlists.get(i).numberTimesListenedTrap();
+			countHouse=countHouse+playlists.get(i).numberTimesListenedHouse();
+			if(countRock>countPop&&countRock>countTrap&&countRock>countHouse){
+			msj="The most listened song genre is ROCK and it is listened " + countRock + "by the user" + getName();
+			}
+			else if(countPop>countTrap&&countPop>countHouse){
+				msj="The most listened song genre is POP and it is listened " + countPop + "by the user" + getName();
+			}
+			else if(countTrap>countHouse){
+				msj="The most listened song genre is TRAP and it is listened " + countTrap + "by the user" + getName();
+			}
+			else if(countHouse>countTrap){
+			msj="The most listened treasure is HOUSE and it is listened " + countHouse + " by the user " + getName();
+			}
+			else{
+			msj="There are several genre of songs that are the most listened by the user " + getName();
+			}
+		}
+		return msj;
 	}
 }

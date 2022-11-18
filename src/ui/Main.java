@@ -50,7 +50,8 @@ public class Main{
 			"9.Delete audio in Playlist\n"+
 			"10.Share playlist\n"+
 			"11.Play an audio according a playlist\n"+
-			"12.Buy a song";
+			"12.Buy a song\n"+
+			"14.Show most listened song genre of a user consumer";
 	}
 	public void executeOption(int option){
 			String username="";
@@ -364,6 +365,16 @@ public class Main{
 							msj=neoTunes.buySong(username,selectionAudio);
 							System.out.println(msj);
 						}
+					}
+				case 14:
+					System.out.println("Enter the name of the user consumer who is going to buy the song");
+					username=reader.next();
+					if(neoTunes.validateIfUserConsumerExist(username)==-1){
+						System.out.println("The user doesn't exists or is not a consumer");
+					}
+					else{
+						msj=neoTunes.showMostListenedGenreInUser(username);
+						System.out.println(msj);
 					}
 					break;
 				case 0: 
