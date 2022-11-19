@@ -102,7 +102,7 @@ public class UserConsumerPremium extends UserConsumer{
 		String msj="";
 		int pos=playlistPosByName(playlistName);
 		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){
-			playlists.get(pos).setplayingTimesOfAudio(audioName);
+			// playlists.get(pos).setplayingTimesOfAudio(audioName);
 			msj=playlists.get(pos).playAudio(audioName);
 		}
 	return msj;
@@ -119,27 +119,26 @@ public class UserConsumerPremium extends UserConsumer{
 		int countTrap=0;
 		int countHouse=0;
 		for (int i=0;i<playlists.size();i++ ) {
-			countRock=countRock+playlists.get(i).numberTimesListenedRock();
-			countPop=countPop+playlists.get(i).numberTimesListenedPop();
-			countTrap=countTrap+playlists.get(i).numberTimesListenedTrap();
-			countHouse=countHouse+playlists.get(i).numberTimesListenedHouse();
+			countRock=playlists.get(i).numberTimesListenedRock();
+			countPop=playlists.get(i).numberTimesListenedPop();
+			countTrap=playlists.get(i).numberTimesListenedTrap();
+			countHouse=playlists.get(i).numberTimesListenedHouse();
 			if(countRock>countPop&&countRock>countTrap&&countRock>countHouse){
-			msj="The most listened song genre is ROCK and it is listened " + countRock + "by the user" + getName();
+			msj="The most listened song genre is ROCK and it is listened " + countRock + " by the user " + getName();
 			}
 			else if(countPop>countTrap&&countPop>countHouse){
-				msj="The most listened song genre is POP and it is listened " + countPop + "by the user" + getName();
+				msj="The most listened song genre is POP and it was listened " + countPop + "by the user" + getName();
 			}
 			else if(countTrap>countHouse){
-				msj="The most listened song genre is TRAP and it is listened " + countTrap + "by the user" + getName();
+				msj="The most listened song genre is TRAP and it was listened " + countTrap + "by the user" + getName();
 			}
 			else if(countHouse>countTrap){
-			msj="The most listened treasure is HOUSE and it is listened " + countHouse + " by the user " + getName();
+			msj="The most listened treasure is HOUSE and it was listened " + countHouse + " by the user " + getName();
 			}
 			else{
 			msj="There are several genre of songs that are the most listened by the user " + getName();
 			}
 		}
-		System.out.println(countRock+"Este es Consumer");
 		return msj;
 	}
 }

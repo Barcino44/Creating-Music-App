@@ -139,22 +139,23 @@ public class PlayList{
 		isdelete=true;
 		return isdelete;
 	}
-	public void setplayingTimesOfAudio(String audioName){
-		int pos=searchPosAudioByName(audioName);
-		System.out.println("Antes "+audios.get(pos).getPlayingTimes());
-		int count=audios.get(pos).getPlayingTimes();
-		audios.get(pos).setPlayingTimes(count+1);
-		System.out.println("Despues " +audios.get(pos).getPlayingTimes());
-	}
-	public int totalTimesOfPlaylist(){
-		int count=0;
+	// public void setplayingTimesOfAudio(String audioName){
+	// 	int pos=searchPosAudioByName(audioName);
+	// 	//System.out.println("Antes "+audios.get(pos).getPlayingTimes());
+	// 	//System.out.println("Despues " +audios.get(pos).getPlayingTimes());
+	// }
+	public int totalTimesListenedAudioInPlayList(){
+		int count=1;
 		for (int i=0;i<audios.size() ;i++ ) {
 			count=count+audios.get(i).getPlayingTimes();
 		}
 		return count;
 	}
 	public String playAudio(String audioName){
+		int count=0;
 		int pos=searchPosAudioByName(audioName);
+		count=audios.get(pos).getPlayingTimes();
+		audios.get(pos).setPlayingTimes(count+1);
 		return "Now listening\n"+
 				audios.get(pos).getName()+"\n"+
 				"The audio has finished";
@@ -178,7 +179,6 @@ public class PlayList{
 			if(audios.get(i)instanceof Song){
 				if(((Song)(audios.get(i))).getSelectionTypeGenre()==1){
 					count=count+((Song)(audios.get(i))).getPlayingTimes();
-					System.out.println(count);
 				}	
 			}
 		}

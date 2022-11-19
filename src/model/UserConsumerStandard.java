@@ -137,9 +137,8 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 	public String playAudioInPlaylist(String playlistName,String audioName){
 		String msj="";							
 		int pos=playlistPosByName(playlistName);
-		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){
-			playlists.get(pos).setplayingTimesOfAudio(audioName);        
-			if((playlists.get(pos).totalTimesOfPlaylist()%3==0&&playlists.get(pos).showTypeAudiotoPlay(audioName)==1)||(playlists.get(pos).showTypeAudiotoPlay(audioName)==2)){
+		if(playlists.get(pos).searchPosAudioByName(audioName)!=-1){        
+			if((playlists.get(pos).totalTimesListenedAudioInPlayList()%3==0&&playlists.get(pos).showTypeAudiotoPlay(audioName)==1)||(playlists.get(pos).showTypeAudiotoPlay(audioName)==2)){
 				msj=playAd()+"\n"+
 				playlists.get(pos).playAudio(audioName);
 			}
@@ -158,7 +157,6 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 			isBought=true;
 		}
 		return isBought;
-
 	}
 	@Override
 	public String showMostListenedSongGenre(){
@@ -168,21 +166,21 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 		int countTrap=0;
 		int countHouse=0;
 		for (int i=0;i<playlists.size();i++ ) {
-			countRock=countRock+playlists.get(i).numberTimesListenedRock();
-			countPop=countPop+playlists.get(i).numberTimesListenedPop();
-			countTrap=countTrap+playlists.get(i).numberTimesListenedTrap();
-			countHouse=countHouse+playlists.get(i).numberTimesListenedHouse();
+			countRock=playlists.get(i).numberTimesListenedRock();
+			countPop=playlists.get(i).numberTimesListenedPop();
+			countTrap=playlists.get(i).numberTimesListenedTrap();
+			countHouse=playlists.get(i).numberTimesListenedHouse();
 			if(countRock>countPop&&countRock>countTrap&&countRock>countHouse){
-			msj="The most listened song genre is ROCK and it is listened " + countRock + "by the user" + getName();
+			msj="The most listened song genre is ROCK and it was listened " + countRock + " by the user " + getName();
 			}
 			else if(countPop>countTrap&&countPop>countHouse){
-				msj="The most listened song genre is POP and it is listened " + countPop + "by the user" + getName();
+				msj="The most listened song genre is POP and it was listened " + countPop + "by the user" + getName();
 			}
 			else if(countTrap>countHouse){
-				msj="The most listened song genre is TRAP and it is listened " + countTrap + "by the user" + getName();
+				msj="The most listened song genre is TRAP and it was listened " + countTrap + "by the user" + getName();
 			}
 			else if(countHouse>countTrap){
-			msj="The most listened treasure is HOUSE and it is listened " + countHouse + " by the user " + getName();
+			msj="The most listened treasure is HOUSE and it was listened " + countHouse + " by the user " + getName();
 			}
 			else{
 			msj="There are several genre of songs that are the most listened by the user " + getName();

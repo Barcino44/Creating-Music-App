@@ -51,6 +51,7 @@ public class Main{
 			"10.Share playlist\n"+
 			"11.Play an audio according a playlist\n"+
 			"12.Buy a song\n"+
+			"13.Show total reproduction in platform\n"+
 			"14.Show most listened song genre of a user consumer";
 	}
 	public void executeOption(int option){
@@ -366,8 +367,13 @@ public class Main{
 							System.out.println(msj);
 						}
 					}
+					break;
+				case 13:
+					msj=neoTunes.totalReproductionAudios();
+					System.out.println(msj);
+					break;
 				case 14:
-					System.out.println("Enter the name of the user consumer who is going to buy the song");
+					System.out.println("Enter the name of the user consumer whose information is to be displayed");
 					username=reader.next();
 					if(neoTunes.validateIfUserConsumerExist(username)==-1){
 						System.out.println("The user doesn't exists or is not a consumer");

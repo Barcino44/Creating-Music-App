@@ -212,13 +212,9 @@ public class NeoTunes {
 	}
 
 	public String playAudioInPlaylist(String consumerUsername, String playlistName, String selectedAudio){
-		String msj="";
+		String msj="The audio cannot be played";
 		int posUser=validateIfUserConsumerExist(consumerUsername);
-		if((((UserConsumer)(users.get(posUser))).playAudioInPlaylist(playlistName,selectedAudio)!=""))
-			msj=(((UserConsumer)(users.get(posUser))).playAudioInPlaylist(playlistName,selectedAudio));
-		else{
-			msj="The audio cannot be played";
-		}
+		msj=(((UserConsumer)(users.get(posUser))).playAudioInPlaylist(playlistName,selectedAudio));
 		return msj;
 	}
 
@@ -265,6 +261,15 @@ public class NeoTunes {
  			}	
  		}
   	return msj;
+ 	}
+ 	public String totalReproductionAudios(){
+ 		String msj="";
+ 		int count=0;
+ 		for (int i=0;i<audios.size();i++) {
+ 			count=count+audios.get(i).getPlayingTimes();
+ 			msj="The quantity of audios played in the platform are "+ count;
+ 		}
+ 		return msj;
  	}
  	public String showMostListenedGenreInUser(String consumerUsername){
  		String msj="";
