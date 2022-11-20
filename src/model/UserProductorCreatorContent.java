@@ -13,4 +13,11 @@ public class UserProductorCreatorContent extends UserProductor{
 		boolean isAdded=podcasts.add(podcast);
 		return isAdded;
 	}
+	public int getPlayingTimesOfPodcast(){
+		int countPlayingTimesSongs=0;
+		for (int i=0;i<podcasts.size();i++ ) {
+			countPlayingTimesSongs=countPlayingTimesSongs+podcasts.get(i).getPlayingTimes();
+		}
+		return countPlayingTimesSongs;
+	}
 }	

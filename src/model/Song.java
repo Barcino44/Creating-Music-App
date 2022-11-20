@@ -56,4 +56,7 @@ public class Song extends Audio{
 	public String getName(){
 		return super.getName();
 	}
+	public int getPlayingTimes(){
+		return super.getPlayingTimes();
+	}
 }

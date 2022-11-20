@@ -133,7 +133,37 @@ public class UserConsumerPremium extends UserConsumer{
 				msj="The most listened song genre is TRAP and it was listened " + countTrap + "by the user" + getName();
 			}
 			else if(countHouse>countTrap){
-			msj="The most listened treasure is HOUSE and it was listened " + countHouse + " by the user " + getName();
+			msj="The most listened song is HOUSE and it was listened " + countHouse + " by the user " + getName();
+			}
+			else{
+			msj="There are several genre of songs that are the most listened by the user " + getName();
+			}
+		}
+		return msj;
+	}
+	@Override
+	public String showMostListenedPodcastCategory(){
+		String msj="";
+		int countPolitic=0;
+		int countEntertainment=0;
+		int countVideogame=0;
+		int countFashion=0;
+		for (int i=0;i<playlists.size();i++ ) {
+			countPolitic=playlists.get(i).numberTimesListenedPolitic();
+			countEntertainment=playlists.get(i).numberTimesListenedEntertaiment();
+			countVideogame=playlists.get(i).numberTimesListenedVideogame();
+			countFashion=playlists.get(i).numberTimesListenedFashion();
+			if(countPolitic>countEntertainment&&countPolitic>countVideogame&&countPolitic>countFashion){
+				msj="The most listened podcast category is POLITICS and it was listened " + countPolitic + " by the user " + getName();
+			}
+			else if(countEntertainment>countVideogame&&countEntertainment>countFashion){
+				msj="The most listened podcast category is ENTERTAINMENT and it was listened " + countEntertainment + "by the user" + getName();
+			}
+			else if(countVideogame>countFashion){
+				msj="The most listened podcast category is VIDEOGAMES and it was listened " + countVideogame + "by the user" + getName();
+			}
+			else if(countFashion>countVideogame){
+			msj="The most listened podcast category is FASHION and it was listened " + countFashion + " by the user " + getName();
 			}
 			else{
 			msj="There are several genre of songs that are the most listened by the user " + getName();

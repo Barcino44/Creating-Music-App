@@ -52,7 +52,16 @@ public class Main{
 			"11.Play an audio according a playlist\n"+
 			"12.Buy a song\n"+
 			"13.Show total reproduction in platform\n"+
-			"14.Show most listened song genre of a user consumer";
+			"14.Show most listened song genre of a user consumer\n"+
+			"15.Show most listened song genre in platform\n"+
+			"16.Show most listened category podcast of a user consumer\n"+
+			"17.Show most listened podcast category in platform\n"+
+			"18.Show top 5 artist\n"+
+			"19.Show top 5 creator content\n"+
+			"20.Show top 10 most listened songs\n"+
+			"21.Show top 10 most listened podcasts\n"+
+			"22.Show number sales by song genre and total gain\n"+
+			"23.Show total vents of the most value song and its total gain";
 	}
 	public void executeOption(int option){
 			String username="";
@@ -92,38 +101,58 @@ public class Main{
 				case 1:
 					System.out.println("Enter the user Nickname");
 					username=reader.next();
+					if(neoTunes.validateIfAnUserAlreadyExist(username)==true){
+						System.out.println("The username already exist");
+					}
+					else{
 					System.out.println("Enter the user Id");
 					userId=reader.next();
 					System.out.println("Enter urlProductor");
 					urlProductor=reader.next();
 					msj=neoTunes.addUserProductArtist(username, userId, urlProductor);
 					System.out.println(msj);
+					}
 					break;
 				case 2:
 					System.out.println("Enter the user Nickname");
 					username=reader.next();
+					if(neoTunes.validateIfAnUserAlreadyExist(username)==true){
+						System.out.println("The username already exist");
+					}
+					else{
 					System.out.println("Enter the user Id");
 					userId=reader.next();
 					System.out.println("Enter urlProductor");
 					urlProductor=reader.next();
 					msj=neoTunes.addUserProductCreatorContent(username, userId, urlProductor);
 					System.out.println(msj);
+					}
 					break;
 				case 3:
 					System.out.println("Enter the user Nickname");
 					username=reader.next();
+					if(neoTunes.validateIfAnUserAlreadyExist(username)==true){
+						System.out.println("The username already exist");
+					}
+					else{
 					System.out.println("Enter the user Id");
 					userId=reader.next();
 					msj=neoTunes.addUserConsumerPremium(username, userId);
 					System.out.println(msj);
+					}
 					break;
 				case 4:
 					System.out.println("Enter the user Nickname");
 					username=reader.next();
+					if(neoTunes.validateIfAnUserAlreadyExist(username)==true){
+						System.out.println("The username already exist");
+					}
+					else{
 					System.out.println("Enter the user Id");
 					userId=reader.next();
 					msj=neoTunes.addUserConsumerStandard(username, userId);
 					System.out.println(msj);
+					}
 					break;
 				case 5:
 					System.out.println("Enter the artist name");
@@ -379,11 +408,53 @@ public class Main{
 						System.out.println("The user doesn't exists or is not a consumer");
 					}
 					else{
-						msj=neoTunes.showMostListenedGenreInUser(username);
+						msj=neoTunes.showMostListenedSongGenreInUser(username);
 						System.out.println(msj);
 					}
 					break;
-				case 0: 
+				case 15:
+						msj=neoTunes.showMostListenedSongGenreInPlatform();
+						System.out.println(msj);
+					break;
+				case 16:
+					System.out.println("Enter the name of the user consumer whose information is to be displayed");
+					username=reader.next();
+					if(neoTunes.validateIfUserConsumerExist(username)==-1){
+						System.out.println("The user doesn't exists or is not a consumer");
+					}
+					else{
+						msj=neoTunes.showMostListenedCategoryInUser(username);
+						System.out.println(msj);
+					}
+					break;
+				case 17:
+					msj=neoTunes.showMostListenedPodcastCategoryInPlatform();
+					System.out.println(msj);
+					break;
+				case 18:
+					msj=neoTunes.showTop5Artist();
+					System.out.println(msj);
+					break;
+				case 19:
+					msj=neoTunes.showTop5CreatorContent();
+					System.out.println(msj);
+					break;
+				case 20:
+					msj=neoTunes.showTop10Song();
+					System.out.println(msj);
+					break;
+				case 21:
+					msj=neoTunes.showTop10Podcast();
+					System.out.println(msj);
+				case 22:
+					msj=neoTunes.showTotalGainAndNumberOfSales();
+					System.out.println(msj);
+					break;
+				case 23:
+					msj=neoTunes.showMostSellingSong();
+					System.out.println(msj);
+					break;
+				case 0:
 					System.out.println("Exit program.");
 					break; 
 

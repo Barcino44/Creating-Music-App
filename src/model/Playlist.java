@@ -139,11 +139,6 @@ public class PlayList{
 		isdelete=true;
 		return isdelete;
 	}
-	// public void setplayingTimesOfAudio(String audioName){
-	// 	int pos=searchPosAudioByName(audioName);
-	// 	//System.out.println("Antes "+audios.get(pos).getPlayingTimes());
-	// 	//System.out.println("Despues " +audios.get(pos).getPlayingTimes());
-	// }
 	public int totalTimesListenedAudioInPlayList(){
 		int count=1;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -177,7 +172,7 @@ public class PlayList{
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
 			if(audios.get(i)instanceof Song){
-				if(((Song)(audios.get(i))).getSelectionTypeGenre()==1){
+				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.ROCK){
 					count=count+((Song)(audios.get(i))).getPlayingTimes();
 				}	
 			}
@@ -220,32 +215,50 @@ public class PlayList{
 		}
 		return count;
 	}
+	public int numberTimesListenedPolitic(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Podcast){
+				if(((Podcast)(audios.get(i))).getTypeCategory()==TypeCategory.POLITICS){
+					count=count+audios.get(i).getPlayingTimes();
+				}	
+			}
+		}
+		return count;
+	}
+	public int numberTimesListenedEntertaiment(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Podcast){
+				if(((Podcast)(audios.get(i))).getTypeCategory()==TypeCategory.ENTERTAINMENT){
+					count=count+audios.get(i).getPlayingTimes();
+				}	
+			}
+		}
+		return count;
+	}
+	public int numberTimesListenedVideogame(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Podcast){
+				if(((Podcast)(audios.get(i))).getTypeCategory()==TypeCategory.VIDEOGAMES){
+					count=count+audios.get(i).getPlayingTimes();
+				}	
+			}
+		}
+		return count;
+	}
+	public int numberTimesListenedFashion(){
+		int count=0;
+		for (int i=0;i<audios.size();i++ ) {
+			if(audios.get(i)instanceof Podcast){
+				if(((Podcast)(audios.get(i))).getTypeCategory()==TypeCategory.FASHION){
+					count=count+audios.get(i).getPlayingTimes();
+				}	
+			}
+		}
+		return count;
+	}
 
-	// public String showSongsToAdd(){
-	// 	String msj="";
-	// 	for (int i=0;i<audios.size() ;i++ ) {
-	// 		if(audios.get(i) instanceof Song){
-	// 			msj=msj+audios.get(i).getName()+"\n";
-	// 			System.out.println(audios.get(i).getName());
-	// 		}			 
-	// 	}
-	// return msj;
-	// }
-	// public String showPodcastsToAdd(){
-	// 	String msj="";
-	// 	for (int i=0;i<audios.size() ;i++ ) {
-	// 		if(audios.get(i) instanceof Podcast){
-	// 			msj=msj+audios.get(i).getName()+"\n";
-	// 		}			 
-	// 	}
-	// return msj;
-	// } 
-	// public String showBothPodcastAndSongs(){
-	// 	String msj="";
-	// 	for (int i=0;i<audios.size() ;i++ ) {
-	// 		msj=msj+audios.get(i).getName()+"\n";
-	// 	}
-	// return msj;
-	// }
 }
 
