@@ -11,8 +11,8 @@ public class NeoTunes {
  	public NeoTunes(String name){
  		users= new ArrayList<User>(10);
  		audios=new ArrayList<Audio>(10);
- 		Song newSong1 = new Song(2  ,"El_sol_no_regresa","Flores de alquiler","www.floresdealquiler.com",300,56,2,0);  //Free use song                                                                                        
-		Song newSong2 = new Song(1,"De_musica_ligera","cancion animal","www.cancionAnimal.com",350,70,3,0);	//Free use song
+ 		Song newSong1 = new Song(2  ,"El_sol_no_regresa","Flores de alquiler","www.floresdealquiler.com",300,56,0,0);  //Free use song                                                                                        
+		Song newSong2 = new Song(1,"De_musica_ligera","cancion animal","www.cancionAnimal.com",350,70,0,0);	//Free use song
 		Podcast newPodcast1 = new Podcast(1,"El_miedo_al_exito","Son pocas las personas que se enfrentan a este miedo","www.AdiosAlMiedo.com",2000,0);  //Free use podcast
 		Podcast newPodcast2 = new Podcast(4,"La_verdad_detras_de_los_ingenieros","Larga vida a los ingenieros","www.verdadIngeniera.com",1500,0); //Free use podcast
 		audios.add(newSong1);
@@ -1082,8 +1082,8 @@ public class NeoTunes {
 		double totalGain=0;
 		for (int i=0;i<audios.size() ;i++ ) {
 			if(audios.get(i)instanceof Song){
-				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.HOUSE){
-					totalGain=totalGain+((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue();
+				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.ROCK){
+					totalGain=totalGain+(((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue());
 				}
 			}
 		}
@@ -1094,7 +1094,7 @@ public class NeoTunes {
 		for (int i=0;i<audios.size() ;i++ ) {
 			if(audios.get(i)instanceof Song){
 				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.POP){
-					totalGain=totalGain+((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue();
+					totalGain=totalGain+(((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue());
 				}
 			}
 		}
@@ -1105,7 +1105,7 @@ public class NeoTunes {
 		for (int i=0;i<audios.size() ;i++ ) {
 			if(audios.get(i)instanceof Song){
 				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.TRAP){
-					totalGain=totalGain+((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue();
+					totalGain=totalGain+(((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue());
 				}
 			}
 		}
@@ -1116,7 +1116,7 @@ public class NeoTunes {
 		for (int i=0;i<audios.size() ;i++ ) {
 			if(audios.get(i)instanceof Song){
 				if(((Song)(audios.get(i))).getTypeGenre()==TypeGenre.HOUSE){
-					totalGain=totalGain+((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue();
+					totalGain=totalGain+(((Song)(audios.get(i))).getSellingTimes()*((Song)(audios.get(i))).getVentValue());
 				}
 			}
 		}

@@ -220,7 +220,7 @@ public class Main{
 						}
 						System.out.println("Enter the name of the podcast");
 						namePodcast=reader.next();
-						System.out.println("Enter the podcast's descriptionPodcast");
+						System.out.println("Enter the podcast's description");
 						descriptionPodcast=reader.next();
 						System.out.println("Enter the podcast's url ");
 						urlPodcast=reader.next();
@@ -446,6 +446,7 @@ public class Main{
 				case 21:
 					msj=neoTunes.showTop10Podcast();
 					System.out.println(msj);
+					break;
 				case 22:
 					msj=neoTunes.showTotalGainAndNumberOfSales();
 					System.out.println(msj);
