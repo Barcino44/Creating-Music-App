@@ -3,7 +3,9 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.lang.Math;
 public class UserConsumerStandard extends UserConsumer implements Announciable{
-
+	
+	public static final int ROWS_SIZE=6;
+	public static final int COLUMNS_SIZE=6;
 	public static final int PLAYLIST_SIZE = 20; 
 	public static final int SONGS_SIZE = 90;
 	private int boughtSongs;
@@ -35,6 +37,11 @@ public class UserConsumerStandard extends UserConsumer implements Announciable{
 		}
 		return isAdded;
 	}
+	/**
+	 * posPlayList: It represents the position of the playlist added. 
+	 * @param  playlist: Playlist - It is the playlist added.
+	 * @return posAdded: int - It is the position where the playlist added is.
+	 */
 	public int posPlayList(PlayList playlist){
 		int posAdded=-1;
 		if(addPlayList(playlist)==true){

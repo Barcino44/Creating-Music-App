@@ -21,6 +21,11 @@ public class UserConsumerPremium extends UserConsumer{
 		boolean isAdded=playlists.add(playlist);
 		return isAdded;
 	}
+	/**
+	 * posPlayList: It represents the position of the playlist added. 
+	 * @param  playlist: Playlist - It is the playlist added.
+	 * @return posAdded: int - It is the position where the playlist added is.
+	 */
 	public int posPlayList(PlayList playlist){
 		int posAdded=-1;
 		if(addPlayList(playlist)==true){

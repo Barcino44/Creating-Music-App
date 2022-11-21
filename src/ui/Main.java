@@ -423,7 +423,7 @@ public class Main{
 						System.out.println("The user doesn't exists or is not a consumer");
 					}
 					else{
-						msj=neoTunes.showMostListenedCategoryInUser(username);
+						msj=neoTunes.showMostListenedPodcastCategoryInUser(username);
 						System.out.println(msj);
 					}
 					break;

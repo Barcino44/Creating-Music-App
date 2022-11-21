@@ -1,7 +1,6 @@
 package model;
 import java.util.Date;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class NeoTunes {
 
@@ -20,7 +19,11 @@ public class NeoTunes {
 		audios.add(newPodcast1);
 		audios.add(newPodcast2);
  	}
-
+ 	/**
+ 	 * validateIfAnUserAlreadyExist: It validates if a user already exist.
+ 	 * @param username: String - It represents the name of the user. 
+ 	 * @return userExist: boolean - It validates if a user with this name already exist. 
+ 	 */
  	public boolean validateIfAnUserAlreadyExist(String username){
  		boolean userExist=false;
  		for (int i=0;i<users.size();i++ ) {
@@ -30,6 +33,13 @@ public class NeoTunes {
  		}
  		return userExist;
  	}
+ 	/**
+ 	 * addUserProductorArtist: It adds an artist.
+ 	 * @param  username: String - It represents the name of the user.
+ 	 * @param  id: String - It represents the id of the user.
+ 	 * @param  url: String - It represents the url of the user artist.
+ 	 * @return msj: String - It is a confirmation that show that the artist could be added.
+ 	 */
  	public String addUserProductArtist(String username, String id, String url){
 		String msj="";
 		Date vinculationDate = new Date();
@@ -38,6 +48,13 @@ public class NeoTunes {
 		msj="New Artist added sucefully";
 		return msj;
 	}
+	/**
+	 * addUserProductorCreatorContent: It adds a creator content.
+	 * @param  username: String - It represents the name of the user.
+ 	 * @param  id: String - It represents the id of the user.
+ 	 * @param  url: String - It represents the url of the user artist.
+	 * @return msj: String - It is a confirmation that show that the creator content could be added.
+	 */
 	public String addUserProductCreatorContent(String username, String id, String url){
 		String msj="";
 		Date vinculationDate = new Date();
@@ -46,6 +63,12 @@ public class NeoTunes {
 		msj="New creator content added sucefully";
 		return msj;
  	}
+ 	/**
+ 	 * addUserConsumerPremium: It adds a consumer premium.
+ 	 * @param  username: String - It represents the name of the user.
+ 	 * @param  id: String - It represents the id of the user.
+ 	 * @return msj: String - It is a confirmation that show that the consumer premium could be added.
+ 	 */
  	public String addUserConsumerPremium(String username, String id){
  		String msj="";
 		Date vinculationDate = new Date();
@@ -54,6 +77,12 @@ public class NeoTunes {
 		msj="New consumer premium added sucefully";
 		return msj;
  	}
+ 	/**
+ 	 * addUserConsumerStandard: It adds a consumerStandard.
+ 	 * @param  username: String - It represents the name of the user.
+ 	 * @param  id: String - It represents the id of the user.
+ 	 * @return msj: String - It is a confirmation that show that the consumer standard could be added.
+ 	 */
  	public String addUserConsumerStandard(String username, String id){
  		String msj="";
 		Date vinculationDate = new Date();
@@ -63,6 +92,17 @@ public class NeoTunes {
 		msj="New consumer standard added sucefully";
 		return msj;
  	}
+ 	/**
+ 	 * addSong: It adds a song.
+ 	 * @param  productorUsername:  String - It represents the name of the productor (in this case artist).
+ 	 * @param  selectionTypeGenre: int - It represents the selection of genre of song.
+ 	 * @param  name: String - It epresents the name of the song.
+ 	 * @param  album: String - It represents the album of the song.
+ 	 * @param  albumURL: String - It represents the url of album of the song.
+ 	 * @param  duration: int - It represents the duration of the song.
+ 	 * @param  ventValue: double - It represents the vent value of the song.
+ 	 * @return msj: String - It is a confirmation that shows that the song could be added.
+ 	 */
  	public String addSong(String productorUsername,int selectionTypeGenre, String name, String album, String albumURL, int duration, double ventValue ){
  		String msj="";
  		for (int i=0;i<users.size();i++){
@@ -79,6 +119,11 @@ public class NeoTunes {
 		}
  		return msj;
  	}
+ 	/**
+ 	 * validateIfArtistExist: It validates if an artist exist.
+ 	 * @param  productorUsername: String - It represents the name of the productor (in this case artist).
+ 	 * @return artistExist: boolean - It shows if the artist exist.
+ 	 */
  	public boolean validateIfArtistExist(String productorUsername){
  		boolean artistExist=false;
  		for (int i=0;i<users.size()&&!artistExist;i++ ) {
@@ -90,6 +135,16 @@ public class NeoTunes {
  		}
  		return artistExist;
  	}
+ 	/**
+ 	 * addPodcast: It adds a podcast.
+ 	 * @param productorUsername:  String - It represents the name of the productor (in this case creator content).
+ 	 * @param  selectionTypeCategory: int - It represents the selection of category of podcast.
+ 	 * @param  name: String - It represents the name of the podcast.
+ 	 * @param  description: String - It represents the description of the podcast.
+ 	 * @param  url: String - It represents the url of the podcast.
+ 	 * @param  duration: int - It represents the duration of the podcast.
+ 	 * @return msj: String - It is a confirmation that shows that the song could be added.
+ 	 */
  	public String addPodcast(String productorUsername,int selectionTypeCategory, String name, String description, String url, int duration){
  		String msj="";
  		for (int i=0;i<users.size();i++){
@@ -105,6 +160,11 @@ public class NeoTunes {
 		}
  		return msj;
  	}
+ 	/**
+ 	 * validateIfCreatorContentExist: It validates if creator content exist.
+ 	 * @param  productorUsername: String - It represents the name of the productor (in this case creator content).
+ 	 * @return creatorContentExist: boolean - It validates if the creator content exist.
+ 	 */
  	public boolean validateIfCreatorContentExist(String productorUsername){
  		boolean creatorContentExist=false;
  		for (int i=0;i<users.size()&&!creatorContentExist;i++ ) {
@@ -116,6 +176,11 @@ public class NeoTunes {
  		}
  		return creatorContentExist;
  	}
+ 	/**
+ 	 * validateIfConsumerExist: It validates if a user consumer exist.
+ 	 * @param  consumerUsername: String - It represents the name of the consumer.
+ 	 * @return consumerPos: int - it represents the position of the consumer in the arraylist.
+ 	 */
  	public int validateIfUserConsumerExist(String consumerUsername){
  		int consumerPos=-1;
  		for (int i=0;i<users.size();i++ ) {
@@ -129,18 +194,30 @@ public class NeoTunes {
  		}
  		return consumerPos;
  	}
+ 	/**
+ 	 * addPlaylistToUser: It adds a playlist to a user consumer.
+ 	 * @param  consumerUsername: String - It represents the name of the user consumer.
+ 	 * @param  selectionPlayList: int - It represents the selection of playlist that the user wants to add.
+ 	 * @param  playListName: String - It represents the name of the playlist.
+ 	 * @return msj: String - It is a confirmation (with code) that shows that the playlist could be added.
+ 	 */
  	public String addPlayListToUser(String consumerUsername, int selectionPlayList, String playListName){
  		String msj="The playList cannot be added";
  		int posUser=validateIfUserConsumerExist(consumerUsername);
  		PlayList newPlayList = new PlayList(selectionPlayList,playListName);
 		((UserConsumer)(users.get(posUser))).addPlayList(newPlayList);
- 			if(((UserConsumer)(users.get(posUser))).addPlayList(newPlayList)==true){
- 				msj="New playList added\n"+
- 				(((UserConsumer)(users.get(posUser))).showCodePlaylist(newPlayList));
-			}	
- 	return msj;
+ 		if(((UserConsumer)(users.get(posUser))).addPlayList(newPlayList)==true){
+ 			msj="New playList added\n"+
+ 			(((UserConsumer)(users.get(posUser))).showCodePlaylist(newPlayList));
+		}	
+ 		return msj;
  	}
-
+ 	/**
+ 	 * validateIfPlaylistExist: It validates if a playlist exist.
+ 	 * @param  consumerUsername: String - It represents the name of the user consumer. 
+ 	 * @param  playListName: String - It represents the name of the playlist.
+ 	 * @return playlistExist: boolean - It validates if a playlist exist.
+ 	 */
  	public boolean validateIfPlaylistExist(String consumerUsername,String playListName){
  		boolean playListExist=false;
  		int posUser=validateIfUserConsumerExist(consumerUsername);
@@ -148,7 +225,13 @@ public class NeoTunes {
  			playListExist=true;
  		}
  		return playListExist;
- 	} 
+ 	}
+ 	/**
+ 	 * showInformationOfAudios: It shows the possible audios to add in the playlist.
+ 	 * @param  consumerUsername: String - It represents the name of the user consumer. 
+ 	 * @param  playListName: String - It represents the name of the playlist.
+ 	 * @return msj: String - It represents the possible audios to add in the playlist.
+ 	 */
  	public String showInformationOfAudios(String consumerUsername,String playListName){
  	 	String msj="";
  	 	int posUser=validateIfUserConsumerExist(consumerUsername);
@@ -169,6 +252,13 @@ public class NeoTunes {
 		}
  	 	return msj;
  	}
+ 	/**
+ 	 * validateIfSelectedAudioExist: It validates if a selected audio exist.
+ 	 * @param  consumerUsername: String - It represents the name of the user consumer.
+ 	 * @param  playlistName: String - It represents the name of the playlist.
+ 	 * @param  selectedAudio: String - It represents the user's selection of audio.  
+ 	 * @return exist: boolean - It validates if the user's selection of audio exist. 
+ 	 */
  	public boolean validateIfSelectedAudioExist(String consumerUsername,String playlistName,String selectedAudio){
  		boolean exist=false;
  		int posUser=validateIfUserConsumerExist(consumerUsername);
@@ -195,7 +285,13 @@ public class NeoTunes {
 		}
 		return exist;
 	}
-
+	/**
+	 * addAudioToPlaylist: It adds an audio in a playlist.	
+	 * @param  consumerUsername: String - It represents the name of the user consumer.
+	 * @param  playlistName: String - It represents the name of the playlist.
+	 * @param  selectedAudio: String - It represents the user's selection of audio. 
+	 * @return msj: String - It is a confirmation that shows that the playlist could be added.
+	 */
 	public String addAudiosToPlaylist(String consumerUsername, String playlistName, String selectedAudio){
 		String msj="";
 		int posUser=validateIfUserConsumerExist(consumerUsername);
@@ -209,13 +305,25 @@ public class NeoTunes {
 		}
 		return msj;
 	}
-
+	/**
+	 * showAudiosAddedInPlaylist: It shows the audios added in a playlist.	
+	 * @param  consumerUsername: String - It represents the name of the user consumer.
+	 * @param  playlistName: String - It represents the name of the playlist.
+	 * @return msj: String - It represents the audios added in the playlist.
+	 */
 	public String showAudiosAddedInPlaylist(String consumerUsername, String playlistName){
 		String msj="";
 		int posUser=validateIfUserConsumerExist(consumerUsername);
 		msj=(((UserConsumer)(users.get(posUser))).showAudiosAddedInPlaylist(playlistName));
 		return msj;
 	}
+	/**
+	 * deleteAudioInPlaylist: It deletes an audio in a playlist.
+	 * @param  consumerUsername: String - It represents the name of the user consumer.
+	 * @param  playlistName: String - It represents the name of the playlist.
+	 * @param  audioName: String - It represents the name of the audio.
+	 * @return msj: String - It is a confirmation that shows that the audio could be deleted.
+	 */
 	public String deleteAudioInPlaylist(String consumerUsername, String playlistName, String audioName){
 		String msj="The audio "+audioName +" cannot be deleted to the playlist "+ playlistName+ " of the consumer "+consumerUsername;
 		int posUser=validateIfUserConsumerExist(consumerUsername);
@@ -224,14 +332,26 @@ public class NeoTunes {
 		}
 		return msj;
 	}
-
+	/**
+	 * playAudioInPlaylist: It plays an audio in a playlist.	
+	 * @param  consumerUsername: String - It represents the name of the user consumer.
+	 * @param  playlistName: String - It represents the name of the playlist.
+	 * @param  selectedAudio: String - It represents the user's selection of audio. 
+	 * @return msj: String - It is a message that shows that the audio is being played.
+	 */
 	public String playAudioInPlaylist(String consumerUsername, String playlistName, String selectedAudio){
 		String msj="The audio cannot be played";
 		int posUser=validateIfUserConsumerExist(consumerUsername);
 		msj=(((UserConsumer)(users.get(posUser))).playAudioInPlaylist(playlistName,selectedAudio));
 		return msj;
 	}
-
+	/**
+	 * showCodeWithMatriz: It shows the code and the matriz of a playlist.
+	 * @param  consumerUsername: String - It represents the name of the user consumer.
+	 * @param  playListName: String - It represents the name of the playlist.
+	 * @param  consumerUsernameToShare: String - It represents the name of the user who the playlist will be share.
+	 * @return msj: String - It represents the matriz and the code of a playlist.
+	 */
  	public String showCodeWithMatriz(String consumerUsername, String playListName, String consumerUsernameToShare){
  		String msj="";
  		int posUser=validateIfUserConsumerExist(consumerUsername);
@@ -239,6 +359,10 @@ public class NeoTunes {
  		"Playlist share successfully to the user "+ consumerUsernameToShare;
  		return msj;
  	}
+ 	/**
+ 	 * showSongsToBuy: It shows the possible songs to add.
+ 	 * @return msj: String - It represents the possible songs to add.
+ 	 */
  	public String showSongsToBuy(){
  		String msj="";
  		for (int i=0;i<audios.size();i++) {
@@ -248,6 +372,11 @@ public class NeoTunes {
  		}
  		return msj;
  	}
+ 	/**
+ 	 * validateIfSelectedSongExist: It validates if the song selected by user exist.
+ 	 * @param  nameSong: String - It represents the selection of the song.
+ 	 * @return songExist: boolean - It validates if the song exist.
+ 	 */
  	public boolean validateIfSelectedSongExist(String nameSong){
  		boolean songExist=false;
  		for (int i=0;i<audios.size();i++ ) {
@@ -259,6 +388,12 @@ public class NeoTunes {
  		}
  		return songExist;
  	}
+ 	/**
+ 	 * buySong: It buys a song.
+ 	 * @param  consumerUsername: String - It represents the name of the user consumer.
+ 	 * @param  nameSong: String - It represents the selection of the song.
+ 	 * @return msj: String - It is a confirmation that shows that the song could be bought.
+ 	 */
  	public String buySong(String consumerUsername, String nameSong){
  		String msj="The song cannot be bought";
  		int count=0;
@@ -276,6 +411,10 @@ public class NeoTunes {
  		}
   	return msj;
  	}
+ 	/**
+ 	 * totalRepreductionAudios: It represents the total reproductions of audios in the platform.
+ 	 * @return msj: String - It shows the number of audios played in the platform. 
+ 	 */
  	public String totalReproductionAudios(){
  		String msj="";
  		int count=0;
@@ -285,12 +424,21 @@ public class NeoTunes {
  		}
  		return msj;
  	}
+ 	/**
+ 	 * showMostListenedSongGenreInUser: It represents the most listened song genre of an user.
+ 	 * @param  consumerUsername: String - It represents the name of the user consumer.
+ 	 * @return msj: String - It represents the most listened genre of song of an user and its times listened.
+ 	 */
  	public String showMostListenedSongGenreInUser(String consumerUsername){
  		String msj="";
  		int posUser=validateIfUserConsumerExist(consumerUsername);
  		msj=((UserConsumer)(users.get(posUser))).showMostListenedSongGenre();
  		return msj;
  	}
+ 	/**
+ 	 * countTimesListenedRockInPlatform: It represents the number of times listened the song genre ROCK in the platform.
+ 	 * @return count: int - It represents the number of times listened ROCK.
+ 	 */
  	public int countTimesListenedRockInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -302,6 +450,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * countTimesListenedPopInPlatform: It represents the number of times listened the song genre POP in the platform.
+ 	 * @return count: int - It represents the number of times listened POP.
+ 	 */
  	public int countTimesListenedPopInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -313,6 +465,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * countTimesListenedTrapInPlatform: It represents the number of times listened the song genre TRAP in the platform.
+ 	 * @return count: int - It represents the number of times listened TRAP.
+ 	 */
  	public int countTimesListenedTrapInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -324,6 +480,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * countTimesListenedHouseInPlatform: It represents the number of times listened the song genre HOUSE in the platform.
+ 	 * @return count: int - It represents the number of times listened HOUSE.
+ 	 */
  	public int countTimesListenedHouseInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -335,6 +495,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * showMostListenedSongGenreInPlatform: It represents the most listened song genre in platform.
+ 	 * @return msj: String - It represents the most listened song genre in the platform with his times.
+ 	 */
  	public String showMostListenedSongGenreInPlatform(){
  		String msj="";
 		int countRock=countTimesListenedRockInPlatform();
@@ -358,12 +522,21 @@ public class NeoTunes {
 		}
 		return msj;
 	}
-	public String showMostListenedCategoryInUser(String consumerUsername){
+	/**
+	 * showMostListenedPodcastCategoryInUser: It represents the most listened podcast category of an user.
+	 * @param  consumerUsername: String - It represents the name of the user consumer.
+	 * @return msj: String - It represents the most listened category of podcast of an user and its times listened.
+	 */
+	public String showMostListenedPodcastCategoryInUser(String consumerUsername){
  		String msj="";
  		int posUser=validateIfUserConsumerExist(consumerUsername);
  		msj=((UserConsumer)(users.get(posUser))).showMostListenedPodcastCategory();
  		return msj;
  	}
+ 	/**
+ 	 * countTimesListenedPoliticsInPlatform: It represents the number of times listened the podcast category POLITICS in the platform.
+ 	 * @return count: int - It represents the number of times listened POLITICS.
+ 	 */
  	 public int countTimesListenedPoliticsInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -375,6 +548,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * countTimesListenedEntertainmentInPlatform: It represents the number of times listened the podcast category ENTERTAINMENT in the platform.
+ 	 * @return count: int - It represents the number of times listened ENTERTAINMENT.
+ 	 */
  	public int countTimesListenedEntertainmentInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -386,6 +563,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * countTimesListenedVideogamesInPlatform: It represents the number of times listened the podcast category VIDEOGAMES in the platform.
+ 	 * @return count: int - It represents the number of times listened VIDEOGAMES.
+ 	 */
  	public int countTimesListenedVideogamesInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -397,6 +578,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * countTimesListenedFashionInPlatform: It represents the number of times listened the podcast category FASHION in the platform.
+ 	 * @return count: int - It represents the number of times listened FASHION.
+ 	 */
  	public int countTimesListenedFashionInPlatform(){
  		int count=0;
  		for (int i=0;i<audios.size();i++ ) {
@@ -408,6 +593,10 @@ public class NeoTunes {
  		}
  		return count;
  	}
+ 	/**
+ 	 * showMostListenedPodcastCategoryInPlatform: It shows the most listened podcast category in the platform.
+ 	 * @return msj: String - It represents the most listened podcast category in the platform with his times.
+ 	 */
  	public String showMostListenedPodcastCategoryInPlatform(){
  		String msj="";
 		int countPolitics=countTimesListenedPoliticsInPlatform();
@@ -415,7 +604,7 @@ public class NeoTunes {
 		int countVideogames=countTimesListenedVideogamesInPlatform();
 		int countFashion=countTimesListenedHouseInPlatform();
 		if(countPolitics>countEntertainment&&countPolitics>countVideogames&&countPolitics>countFashion){
-		msj="The most listened podcast category is POLITICS and it is listened " + countPolitics + " times in the platform";
+			msj="The most listened podcast category is POLITICS and it is listened " + countPolitics + " times in the platform";
 		}
 		else if(countEntertainment>countVideogames&&countEntertainment>countFashion){
 			msj="The most listened podcast category is ENTERTAINMENT and it was listened " + countEntertainment + " times in the platform";
@@ -424,13 +613,17 @@ public class NeoTunes {
 			msj="The most listened podcast category is VIDEOGAMES and it was listened " + countVideogames + " times in the platform";
 		}
 		else if(countFashion>countVideogames){
-		msj="The most listened podcast category is FASHION and it was listened " + countFashion + " times in the platform";
+			msj="The most listened podcast category is FASHION and it was listened " + countFashion + " times in the platform";
 		}
 		else{
-		msj="There are several categories of podcasts that are the most listened in the platform";
+			msj="There are several categories of podcasts that are the most listened in the platform";
 		}
 		return msj;
 	}
+	/**
+	 * showTop5Artist: It shows the top 5 of artist according the number of reproductions of his songs.
+	 * @return msj: String - It represents the top 5 of artist.
+	 */
 	public String showTop5Artist(){
 		String msj="";
 		int top1NumberOfPlayingTimes=0;
@@ -496,7 +689,10 @@ public class NeoTunes {
 	        "Top 5."+artistName5 + ", its songs has been played " + top5NumberOfPlayingTimes;
 	    return msj;
       }
-
+    /**
+     * showTop5Artist: It shows the top 5 of creators contents according the number of reproductions of his songs.
+	 * @return msj: String - It represents the top 5 of creator contents.
+     */
     public String showTop5CreatorContent(){
 		String msj="";
 		int top1NumberOfPlayingTimes=0;
@@ -555,13 +751,17 @@ public class NeoTunes {
             }
         }
     	msj=
-	        "Top 1."+creatorContentName1 + ", its songs has been played " + top1NumberOfPlayingTimes+"\n"+
-	        "Top 2."+creatorContentName2 + ", its songs has been played " + top2NumberOfPlayingTimes+"\n"+
-	        "Top 3."+creatorContentName3 + ", its songs has been played " + top3NumberOfPlayingTimes+"\n"+
-	        "Top 4."+creatorContentName4 + ", its songs has been played " + top4NumberOfPlayingTimes+"\n"+
-	        "Top 5."+creatorContentName5 + ", its songs has been played " + top5NumberOfPlayingTimes;
+	        "Top 1."+creatorContentName1 + ", its podcasts has been played " + top1NumberOfPlayingTimes+"\n"+
+	        "Top 2."+creatorContentName2 + ", its podcasts has been played " + top2NumberOfPlayingTimes+"\n"+
+	        "Top 3."+creatorContentName3 + ", its podcasts has been played " + top3NumberOfPlayingTimes+"\n"+
+	        "Top 4."+creatorContentName4 + ", its podcasts has been played " + top4NumberOfPlayingTimes+"\n"+
+	        "Top 5."+creatorContentName5 + ", its podcasts has been played " + top5NumberOfPlayingTimes;
 	    return msj;
-      }
+    }
+    /**
+     * showTop10Song: It represents the top 10 of songs according the number of reproductions.
+     * @return msj: String - It represents the top 10 of songs.
+     */
    		public String showTop10Song(){
 		String msj="";
 		int top1NumberOfPlayingTimes=0;
@@ -798,6 +998,10 @@ public class NeoTunes {
 	        "Top 10."+songName10 + ", the songs has been played " + top5NumberOfPlayingTimes+" its genre is "+typeGenreSong10;
 	    return msj;
 	}
+	/**
+	 * showTop10Podcast: It represents the top 10 of podcasts according the number of reproductions.
+     * @return msj: String - It represents the top 10 of podcasts.
+	 */
 	public String showTop10Podcast(){
 		String msj="";
 		int top1NumberOfPlayingTimes=0;
@@ -1034,6 +1238,10 @@ public class NeoTunes {
 	        "Top 10."+podcastName10 + ", the podcasts has been played " + top5NumberOfPlayingTimes+" its category is "+typeCategoryPodcast10;
 	    return msj;
 	}
+	/**
+	 * countNumberOfSellingsRock: It represents the number sales of song genre ROCK in the platform.
+	 * @return count: int - It represents the number of sales of ROCK.
+	 */
 	public int countNumberOfSellingsRock(){
 		int count=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1045,6 +1253,10 @@ public class NeoTunes {
 		}
 		return count;
 	}
+	/**
+	 * countNumberOfSellingsPop: It represents the number sales of song genre POP in the platform.
+	 * @return count: int - It represents the number of sales of POP.
+	 */
 	public int countNumberOfSellingsPop(){
 		int count=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1056,6 +1268,10 @@ public class NeoTunes {
 		}
 		return count;
 	}
+	/**
+	 * countNumberOfSellingsTrap: It represents the number sales of song genre TRAP in the platform.
+	 * @return count: int - It represents the number of sales of TRAP.
+	 */
 	public int countNumberOfSellingsTrap(){
 		int count=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1067,6 +1283,10 @@ public class NeoTunes {
 		}
 		return count;
 	}
+	/**
+	 * countNumberOfSellingsHouse: It represents the number sales of song genre HOUSE in the platform.
+	 * @return count: int - It represents the number of sales of HOUSE.
+	 */
 	public int countNumberOfSellingsHouse(){
 		int count=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1078,6 +1298,10 @@ public class NeoTunes {
 		}
 		return count;
 	}
+	/**
+	 * totalGainSellingRock: It represents the total gain of the sellings of ROCK.
+	 * @return totalGain: double - It represents the total gain of ROCK.
+	 */
 	public double totalGainSellingRock(){
 		double totalGain=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1089,6 +1313,10 @@ public class NeoTunes {
 		}
 		return totalGain;
 	}
+	/**
+	 * totalGainSellingPop: It represents the total gain of the sellings of POP.
+	 * @return totalGain: double - It represents the total gain of POP.
+	 */
 	public double totalGainSellingPop(){
 		double totalGain=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1100,6 +1328,10 @@ public class NeoTunes {
 		}
 		return totalGain;
 	}
+	/**
+	 * totalGainSellingTrap: It represents the total gain of the sellings of TRAP.
+	 * @return totalGain: double - It represents the total gain of TRAP.
+	 */
 	public double totalGainSellingTrap(){
 		double totalGain=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1111,6 +1343,10 @@ public class NeoTunes {
 		}
 		return totalGain;
 	}
+	/**
+	 * totalGainSellingHouse: It represents the total gain of the sellings of HOUSE.
+	 * @return totalGain: double - It represents the total gain of HOUSE.
+	 */
 	public double totalGainSellingHouse(){
 		double totalGain=0;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -1122,12 +1358,20 @@ public class NeoTunes {
 		}
 		return totalGain;
 	}
+	/**
+	 * showTotalGainAndNumberOfSales: It shows the total gain and the selling times of every genre of songs.
+	 * @return String - It shows the total gain and selling times of every genre of songs. 
+	 */
 	public String showTotalGainAndNumberOfSales(){
 		return "The number of sales of the genre ROCK is "+countNumberOfSellingsRock()+", and the total gain is"+totalGainSellingRock()+"\n"+
 			   "The number of sales of the genre POP is "+countNumberOfSellingsPop()+", and the total gain is "+totalGainSellingPop()+"\n"+
 			   "The number of sales of the genre TRAP is "+countNumberOfSellingsTrap()+", and the total gain is "+totalGainSellingTrap()+"\n"+
 			   "The number of sales of the genre HOUSE is "+countNumberOfSellingsHouse()+", and the total gain is "+totalGainSellingHouse();
-	}  			
+	}
+	/**
+	 * posMostSellingSong: It represents the position of most selling song in the platform. 
+	 * @return pos: int - It is most position of the most selling song.
+	 */
 	public int posMostSellingSong(){
 		int pos=-1;
 		int mostSellingSong=0;
@@ -1141,6 +1385,10 @@ public class NeoTunes {
 		}
 		return pos;
 	}
+	/**
+	 * showMostSellingSong: It shows the most selling song in the platform with the total gain.
+	 * @return msj: It is the information of most selling song.
+	 */
 	public String showMostSellingSong(){
 		String msj="No song has been purchased yet";
 		int pos=posMostSellingSong();

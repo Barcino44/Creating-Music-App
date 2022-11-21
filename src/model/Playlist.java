@@ -36,6 +36,10 @@ public class PlayList{
 	public String getPlayListName(){
 		return playListName;
 	}
+	/**
+	 * fillMatriz: It fills the matriz of the playlist
+	 * @return matriz: int[][] - It is the matriz fill.
+	 */
 	public int[][] fillMatriz(){
 		int upperBound=9;
 		int lowerBound=1;
@@ -49,6 +53,10 @@ public class PlayList{
 		}	
 		return matriz; 
 	}
+	/**
+	 * showMatrizPlaylist: It shows the matriz of the playlist.
+	 * @return msj - String: It is the matriz printed.
+	 */
 	public String showMatrizPlaylist(){
 		//Print matriz
 		String msj="";
@@ -63,6 +71,10 @@ public class PlayList{
 		 }
 	return msj;
 	}
+	/**
+	 * showCodePlaylist: It shows the code of the playlist using the matriz.
+	 * @return msj: String - It is the matriz of the playlist.
+	 */
 	public String showCodePlaylist(){
 		String msj="";
 		int[][] matrizFill=fillMatriz();
@@ -111,9 +123,18 @@ public class PlayList{
 			}
 	return msj;
 	}
+	/**
+	 * addAudio: It adds an audio in the playlist.
+	 * @param  audio: Audio - It represents the audio that is going to be added.
+	 * @return boolean.
+	 */
 	public boolean addAudio(Audio audio){
 		return audios.add(audio);
 	}
+	/**
+	 * listAudios: It list the audios of the playlist.
+	 * @return msj: String - It represents the list of audios.
+	 */
 	public String listAudios(){
 		String msj="";
 		for (int i=0;i<audios.size();i++ ) {
@@ -121,6 +142,11 @@ public class PlayList{
 		}
 		return msj;
 	}
+	/**
+	 * searchPosAudioByName: It search the position of an audio using the name.
+	 * @param  audioName: String - It represents the name of the audio.
+	 * @return pos: int - It represents the position of the audio.
+	 */
 	public int searchPosAudioByName(String audioName){
 		boolean isFound=false;
 		int pos=-1;
@@ -132,6 +158,11 @@ public class PlayList{
 		}
 		return pos;
 	}
+	/**
+	 * deleteAudio: It deletes the audio of a playlist using the name.
+	 * @param  audioName: String - It represents the name of the audio.
+	 * @return isdelete: boolean.
+	 */
 	public boolean deleteAudio(String audioName){
 		boolean isdelete=false;
 		int pos=searchPosAudioByName(audioName);
@@ -139,6 +170,10 @@ public class PlayList{
 		isdelete=true;
 		return isdelete;
 	}
+	/**
+	 * totalTimesListenedAudioInPlayList: It represents the total times of the audios has been play in the playlist.
+	 * @return count: int - It represents the number of times that the audios has been played.
+	 */
 	public int totalTimesListenedAudioInPlayList(){
 		int count=1;
 		for (int i=0;i<audios.size() ;i++ ) {
@@ -146,6 +181,11 @@ public class PlayList{
 		}
 		return count;
 	}
+	/**
+	 * playAudio: It plays an audio in the playlist.
+	 * @param audioName: String - It represents the name of the audio.
+	 * @return String: It is a message that shows the audio reproduction.
+	 */
 	public String playAudio(String audioName){
 		int count=0;
 		int pos=searchPosAudioByName(audioName);
@@ -154,8 +194,12 @@ public class PlayList{
 		return "Now listening\n"+
 				audios.get(pos).getName()+"\n"+
 				"The audio has finished";
-
 	}
+	/**
+	 * showTypeAudiotoPlay: It shows the type of audio that will played.
+	 * @param audioName: String - It represents the name of the audio.
+	 * @return int: typeAudio: int - It represents one of the possible types of audios.
+	 */
 	public int showTypeAudiotoPlay(String audioName){
 		int typeAudio=-1;
 		int pos=searchPosAudioByName(audioName);
@@ -167,7 +211,10 @@ public class PlayList{
 		}
 		return typeAudio;
 	}
-
+	/**
+	 * numberTimesListenedRock: It represents the number of times that the song genre ROCK has been played in the playlist.
+	 * @return count: int - It represents the number of times that ROCK has been played. 
+	 */
 	public int numberTimesListenedRock(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
@@ -179,7 +226,10 @@ public class PlayList{
 		}
 		return count;
 	}
-
+	/**
+	 * numberTimesListenedPop: It represents the number of times that the song genre POP has been played in the playlist.
+	 * @return count: int - It represents the number of times that POP has been played. 
+	 */
 	public int numberTimesListenedPop(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
@@ -191,7 +241,10 @@ public class PlayList{
 		}
 		return count;
 	}
-
+	/**
+	 * numberTimesListenedTrap: It represents the number of times that the song genre TRAP has been played in the playlist.
+	 * @return count: int - It represents the number of times that TRAP has been played. 
+	 */
 	public int numberTimesListenedTrap(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
@@ -203,7 +256,10 @@ public class PlayList{
 		}
 		return count;
 	}
-
+	/**
+	 * numberTimesListenedHouse: It represents the number of times that the song genre HOUSE has been played in the playlist.
+	 * @return count: int - It represents the number of times that HOUSE has been played. 
+	 */
 	public int numberTimesListenedHouse(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
@@ -215,6 +271,10 @@ public class PlayList{
 		}
 		return count;
 	}
+	/**
+	 * numberTimesListenedPolitic: It represents the number of times that the podcast category POLITICS has been played in the playlist.
+	 * @return count: int - It represents the number of times that POLITICS has been played. 
+	 */
 	public int numberTimesListenedPolitic(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
@@ -226,6 +286,10 @@ public class PlayList{
 		}
 		return count;
 	}
+	/**
+	 * numberTimesListenedEntertainment: It represents the number of times that the podcast category ENTERTAINMENT has been played in the playlist.
+	 * @return count: int - It represents the number of times that ENTERTAINMENT has been played. 
+	 */
 	public int numberTimesListenedEntertaiment(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
@@ -237,6 +301,10 @@ public class PlayList{
 		}
 		return count;
 	}
+	/**
+	 * numberTimesListenedVideogame: It represents the number of times that the podcast category VIDEOGAMES has been played in the playlist.
+	 * @return count: int - It represents the number of times that VIDEOGAMES has been played. 
+	 */
 	public int numberTimesListenedVideogame(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
@@ -248,6 +316,10 @@ public class PlayList{
 		}
 		return count;
 	}
+	/**
+	 * numberTimesListenedFashion: It represents the number of times that the podcast category FASHION has been played in the playlist.
+	 * @return count: int - It represents the number of times that FASHION has been played. 
+	 */
 	public int numberTimesListenedFashion(){
 		int count=0;
 		for (int i=0;i<audios.size();i++ ) {
